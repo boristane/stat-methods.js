@@ -1,0 +1,26 @@
+language: node_js
+sudo: false
+node_js:
+  - '10'
+
+cache:
+  directories:
+    - '.eslintcache'
+    - 'node_modules'
+
+git:
+  depth: 10
+branches:
+  only:
+    - master
+
+install:
+  - npm install -g jest
+  - npm ci
+
+script:
+  # Tests
+  - npm run test
+  # Build
+  - npm run build
+

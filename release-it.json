@@ -1,0 +1,8 @@
+{
+  "verbose": true,
+  "buildCommand": "npm run build",
+  "github": {
+      "release": true,
+      "tokenRef": "GITHUB_TOKEN"
+  }
+}
