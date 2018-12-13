@@ -21,6 +21,6 @@ install:
 script:
   # Tests
   - npm run test
-  # Build
+  # Integration
   - npm run build
 
