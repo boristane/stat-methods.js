@@ -16,6 +16,7 @@ These functions calculate an average or typical value from a population or sampl
 -   [mean](#mean): Arithmetic mean ('average')
 -   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
 -   [median](#median): Median (middle value)
+-   [medianLow](#medianLow): Low median
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -76,6 +77,37 @@ median([1, 2, 3, 4, 5, 6]); // -> 3.5
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`. In case the data array is non numeric but supports order operations, the `medianLow` and `medianHigh` are recommended.
+
+#### medianLow
+
+Return the low median of a data array.
+
+The low median is always a member of the data set. The `medianLow` method accepts both numeric and non numeric data arrays.
+
+When the number of observations is odd, the middle value is returned.
+
+```js
+medianLow([1, 2, 3, 4, 5]); // -> 3
+```
+
+When the number of observations is even, the smaller of the two middle values is returned.
+
+```js
+medianLow([1, 2, 3, 4, 5, 6]); // -> 3
+```
+
+The median low can be computed with non numeric data arrays, provided they can be sorted and a compare function similar to the compare functions required by the standard javascript [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method.
+
+```js
+function compareFunction(elt1, elt2) {
+  return elt1.charCodeAt(0) - elt2.charCodeAt(0);
+}
+medianLow(['a', 'c', 'b', 'd'], compareFunction; // -> 'b'
+```
+
+By default, the compare function orders the data array in ascending order, in the numerical sense.
+
+If the data array is empty, the method returns `undefined`.
 
 ## License
 

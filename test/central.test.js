@@ -2,6 +2,7 @@ import{ testUndefinedWithNullable } from './utils';
 import { mean,
         harmonicMean,
         median,
+        medianLow,
        } from '../src/central';
 
 describe('Averages and measures of central location', () => {
@@ -40,5 +41,17 @@ describe('Averages and measures of central location', () => {
     expect(median(3)).toBeUndefined();
     expect(median([3])).toBe(3)
     testUndefinedWithNullable(median);
+  });
+
+  test('Median Low', () => {
+    expect(medianLow([1, 12, 3, 15, 6, 8, 9])).toBe(8);
+    expect(medianLow([1, -2, 3, 4, 8, 6, 5, 9])).toBe(4);
+    expect(medianLow([1, 2, 3, 4, 5])).toBe(3);
+    expect(medianLow([1, 2, 3, 4, 5, 6])).toBe(3);
+    expect(medianLow(['a', 'c', 'b', 'd'], (a, b) => a.charCodeAt(0) - b.charCodeAt(0))).toBe('b');
+    expect(medianLow([])).toBeUndefined();
+    expect(medianLow(3)).toBeUndefined();
+    expect(medianLow([3])).toBe(3)
+    testUndefinedWithNullable(medianLow);
   });
 });
