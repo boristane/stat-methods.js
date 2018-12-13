@@ -32,3 +32,8 @@ export function harmonicMean(arr) {
   }
   return arr.length / sum;
 }
+
+export default {
+  mean,
+  harmonicMean,
+};

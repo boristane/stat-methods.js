@@ -14,7 +14,7 @@ A library which provides methods for calculating mathematical statistics of nume
 
 These functions calculate an average or typical value from a population or sample.
 -   [mean](#mean): Arithmetic mean ('average')
--   [harmoniMean](#harmonNicMean): Harmonic mean ('subcontrary mean')
+-   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
 
 Note: The methods do not require the data given to them to be sorted.
 
