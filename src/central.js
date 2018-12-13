@@ -33,7 +33,27 @@ export function harmonicMean(arr) {
   return arr.length / sum;
 }
 
+/**
+ * Return the median (middle value) of a numeric data array.
+ * The median is the value separating the higher half from the lower half of a data sample.
+ * If there is an odd number of numbers, the middle one is picked.
+ * If there is an even number of observations, then there is no single middle value;
+ * the median is then usually defined to be the mean of the two middle values.
+ * @param {Array} arr the data array
+ * @returns {Number} the median of the data array
+ */
+export function median(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!Number.isFinite(arr[i])) return undefined;
+  }
+  const sorted = [...arr].sort((a, b) => a - b);
+  const l = sorted.length;
+  return l % 2 ? sorted[Math.floor(l / 2)] : (sorted[l / 2] + sorted[l / 2 - 1]) / 2;
+}
+
 export default {
   mean,
   harmonicMean,
+  median,
 };

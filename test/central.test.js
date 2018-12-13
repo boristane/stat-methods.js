@@ -1,6 +1,8 @@
 import{ testUndefinedWithNullable } from './utils';
-import { mean } from '../src/central';
-import { harmonicMean } from '../src/central';
+import { mean,
+        harmonicMean,
+        median,
+       } from '../src/central';
 
 describe('Averages and measures of central location', () => {
   test('Mean', () => {
@@ -25,5 +27,18 @@ describe('Averages and measures of central location', () => {
     expect(harmonicMean(3)).toBeUndefined();
     expect(harmonicMean([3])).toBe(3)
     testUndefinedWithNullable(harmonicMean);
+  });
+
+  test('Median', () => {
+    expect(median([1, 12, 3, 15, 6, 8, 9])).toBe(8);
+    expect(median([1, -2, 3, 4, 8, 6, 5, 9])).toBe(4.5);
+    expect(median([1, 2, 3, 4, 5])).toBe(3);
+    expect(median([1, 2, 3, 4, 5, 6])).toBe(3.5);
+    expect(median(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(median([NaN, 2.5, 3, 5.75])).toBeUndefined();
+    expect(median([])).toBeUndefined();
+    expect(median(3)).toBeUndefined();
+    expect(median([3])).toBe(3)
+    testUndefinedWithNullable(median);
   });
 });
