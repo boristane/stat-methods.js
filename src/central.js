@@ -1,5 +1,5 @@
 /**
- * Return the sample arithmetic mean of a data array.
+ * Return the sample arithmetic mean of a numeric data array.
  * The arithmetic mean is the sum of the data divided by the number of data points.
  * @param {Number[]} arr the data array
  * @returns {Number} the arithmetic mean of the data array
@@ -15,7 +15,7 @@ export function mean(arr) {
 }
 
 /**
- * Return the harmonic mean of a data array.
+ * Return the harmonic mean of a numeric data array.
  * The harmonic mean is the reciprocal of the arithmetic mean of the reciprocals of the data.
  * It is the number of data points divided by the sum of the reciprocals of the data points.
  * For example, the harmonic mean of three values a, b and c
