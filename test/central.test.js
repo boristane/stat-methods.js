@@ -4,6 +4,7 @@ import { mean,
         median,
         medianLow,
         medianHigh,
+        mode,
        } from '../src/central';
 
 describe('Averages and measures of central location', () => {
@@ -66,5 +67,15 @@ describe('Averages and measures of central location', () => {
     expect(medianHigh(3)).toBeUndefined();
     expect(medianHigh([3])).toBe(3)
     testUndefinedWithNullable(medianHigh);
+  });
+
+  test('Mode', () => {
+    expect(mode([1, 2, 3, 3, 4, 4])).toEqual([3, 4]);
+    expect(mode([1, 1, 2])).toEqual([1]);
+    expect(mode(['a', 'c', 'b', 'd', 'c'])).toEqual(['c']);
+    expect(mode([])).toBeUndefined();
+    expect(mode(3)).toBeUndefined();
+    expect(mode([3])).toEqual([3])
+    testUndefinedWithNullable(mode);
   });
 });

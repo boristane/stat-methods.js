@@ -17,6 +17,8 @@ These methods calculate an average or typical value from a population or sample.
 -   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
 -   [median](#median): Median (middle value)
 -   [medianLow](#medianLow): Low median
+-   [medianHigh](#medianHigh): High median
+-   [mode](#mode): modes (most common data points)
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -140,6 +142,29 @@ medianHigh(['a', 'c', 'b', 'd'], compareFunction); // -> 'c'
 ```
 
 By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function with numerical data might result in invalid results.
+
+If the data array is empty, the method returns `undefined`.
+
+#### mode
+
+Return mode(s) of a data array.
+
+The mode is the most common data point from the data array. The method `mode` returns the mode(s) in an array.
+
+```js
+mode([1, 1, 2]); // -> [1]
+```
+If there are multiple data points with the same number of occurences in the data array, there are multiple modes and they are all returned as an array.
+
+```js
+mode([1, 2, 3, 3, 4, 4]); // [3, 4]
+```
+
+The `mode` method also applies to non-numeric data arrays.
+
+```js
+mode(['a', 'c', 'b', 'd', 'c']); // -> ['c']
+```
 
 If the data array is empty, the method returns `undefined`.
 

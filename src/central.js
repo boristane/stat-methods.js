@@ -1,3 +1,5 @@
+import { getAllIndexes } from './utils';
+
 /**
  * Return the sample arithmetic mean of a numeric data array.
  * The arithmetic mean is the sum of the data divided by the number of data points.
@@ -84,10 +86,42 @@ export function medianHigh(arr, func = (a, b) => a - b) {
   return sorted[Math.floor(sorted.length / 2)];
 }
 
+/**
+ * Return mode(s) of a data array.
+ * The mode is the most common data point from the data array.
+ * If there are multiple data points with the same number of occurences in the data array,
+ * there are multiple modes and they are all returned as an array.
+ * @param {Array} arr the data array
+ * @returns {Array} the modes of the data array
+ */
+export function mode(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const numOccurences = [];
+  const keys = [];
+  for (let i = 0; i < arr.length; i += 1) {
+    const index = keys.indexOf(arr[i]);
+    if (index < 0) {
+      keys.push(arr[i]);
+      numOccurences.push(1);
+    } else {
+      numOccurences[index] += 1;
+    }
+  }
+
+  const occurenceMax = numOccurences.reduce((acc, val) => (val > acc ? val : acc));
+  const modesIndexes = getAllIndexes(numOccurences, occurenceMax);
+  const modes = [];
+  for (let i = 0; i < modesIndexes.length; i += 1) {
+    modes.push(keys[modesIndexes[i]]);
+  }
+  return modes;
+}
+
 export default {
   mean,
   harmonicMean,
   median,
   medianLow,
   medianHigh,
+  mode,
 };
