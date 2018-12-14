@@ -5,6 +5,7 @@ import { mean,
         medianLow,
         medianHigh,
         mode,
+        medianGrouped,
        } from '../src/central';
 
 describe('Averages and measures of central location', () => {
@@ -77,5 +78,17 @@ describe('Averages and measures of central location', () => {
     expect(mode(3)).toBeUndefined();
     expect(mode([3])).toEqual([3])
     testUndefinedWithNullable(mode);
+  });
+
+  test('Median Grouped', () => {
+    expect(medianGrouped([52, 52, 53, 54])).toBe(52.5);
+    expect(medianGrouped([1, 2, 2, 3, 4, 4, 4, 4, 4, 5])).toBe(3.7);
+    expect(medianGrouped([59, 65, 61, 62, 53, 55, 60, 70, 64, 56, 58, 58, 62, 62, 68, 65, 56, 59, 68, 61, 67], 5)).toBe(61.4375);
+    expect(medianGrouped([1, 3, 3, 5, 7])).toBe(3.25);
+    expect(medianGrouped([1, 3, 3, 5, 7], 2)).toBe(3.5);
+    expect(medianGrouped([])).toBeUndefined();
+    expect(medianGrouped(3)).toBeUndefined();
+    expect(medianGrouped([3])).toEqual(3)
+    testUndefinedWithNullable(medianGrouped);
   });
 });

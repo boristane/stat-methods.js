@@ -6,7 +6,7 @@
 
 ## Getting Started
 
-A library which provides methods for calculating mathematical statistics of numeric (Real-valued) data. The module is heavily inspired by The Python Standard Library [statistics](https://docs.python.org/3/library/statistics.html).
+A library which provides methods for calculating mathematical statistics of numeric (Real-valued) data. The library is heavily inspired by The Python Standard Library [statistics](https://docs.python.org/3/library/statistics.html) module.
 
 ## Documentation
 
@@ -145,9 +145,27 @@ By default, the compare function orders the data array in ascending order, in th
 
 If the data array is empty, the method returns `undefined`.
 
+#### medianGrouped
+
+Return the median (middle value) of grouped continuous numeric data, using interpolation.
+
+```js
+medianGrouped([52, 52, 53, 54]); // -> 52.5
+medianGrouped([1, 2, 2, 3, 4, 4, 4, 4, 4, 5]); // -> 3.7
+```
+
+The `medianGrouped` method takes an optional argument `width` which represents the class width, and defaults to 1. Changing the class width will change the result.
+
+```js
+medianGrouped([1, 3, 3, 5, 7]); // -> 3.25
+medianGrouped([1, 3, 3, 5, 7], 2); // -> 3.5
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
 #### mode
 
-Return mode(s) of a data array.
+Return the mode(s) of a data array.
 
 The mode is the most common data point from the data array. The method `mode` returns the mode(s) in an array.
 

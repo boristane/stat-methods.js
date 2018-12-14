@@ -87,7 +87,43 @@ export function medianHigh(arr, func = (a, b) => a - b) {
 }
 
 /**
- * Return mode(s) of a data array.
+ * Return the median (middle value) of grouped continuous numeric data, using interpolation.
+ * @param {Number[]} arr the data array
+ * @param {Number} [width = 1] the width of the groups
+ * @returns {Number} the grouped median of the data array
+ */
+export function medianGrouped(arr, width = 1) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const groups = [];
+  const sorted = [...arr].sort((a, b) => a - b);
+  let current = sorted[0];
+  for (let i = 0; i < sorted.length; i += 1) {
+    if (!Number.isFinite(sorted[i])) return undefined;
+    while (sorted[i] >= current - width / 2) {
+      groups.push({
+        interval: [current - width / 2, current + width / 2],
+        frequency: 0,
+      });
+      current += width;
+    }
+    groups.find(group => (sorted[i] >= group.interval[0] && sorted[i] < group.interval[1]))
+      .frequency += 1;
+  }
+  const l = sorted.length;
+  let medianGroup;
+  let groupIterator = 0;
+  let count = 0;
+  while (count < l / 2) {
+    medianGroup = groups[groupIterator];
+    count += medianGroup.frequency;
+    groupIterator += 1;
+  }
+  count -= medianGroup.frequency;
+  return medianGroup.interval[0] + ((l / 2) - count) / medianGroup.frequency * width;
+}
+
+/**
+ * Return the mode(s) of a data array.
  * The mode is the most common data point from the data array.
  * If there are multiple data points with the same number of occurences in the data array,
  * there are multiple modes and they are all returned as an array.
