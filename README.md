@@ -108,7 +108,38 @@ function compareFunction(elt1, elt2) {
 medianLow(['a', 'c', 'b', 'd'], compareFunction); // -> 'b'
 ```
 
-By default, the compare function orders the data array in ascending order, in the numerical sense.
+By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function with numerical data might result in invalid results.
+
+If the data array is empty, the method returns `undefined`.
+
+#### medianHigh
+
+Return the high median of a data array.
+
+The high median is always a member of the data set. The `medianHigh` method accepts both numeric and non numeric data arrays.
+
+-   When the number of observations is odd, the middle value is returned.
+
+```js
+medianHigh([1, 2, 3, 4, 5]); // -> 3
+```
+
+-   When the number of observations is even, the larger of the two middle values is returned.
+
+```js
+medianHigh([1, 2, 3, 4, 5, 6]); // -> 4
+```
+
+The median high can be computed with non numeric data arrays, provided they can be sorted and a compare function similar to the compare function required by the standard javascript [Array.prototype.sort()](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) method is provided.
+
+```js
+function compareFunction(elt1, elt2) {
+  return elt1.charCodeAt(0) - elt2.charCodeAt(0);
+}
+medianHigh(['a', 'c', 'b', 'd'], compareFunction); // -> 'c'
+```
+
+By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function with numerical data might result in invalid results.
 
 If the data array is empty, the method returns `undefined`.
 

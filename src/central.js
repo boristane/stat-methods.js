@@ -68,9 +68,26 @@ export function medianLow(arr, func = (a, b) => a - b) {
   return sorted[Math.ceil(sorted.length / 2 - 1)];
 }
 
+/**
+ * Return the high median of a data array.
+ * The high median is always a member of the data set.
+ * It accepts both numeric and non numeric data arrays.
+ * When the number of observations is odd, the middle value is returned.
+ * When the number of observations is even, the larger of the two middle values is returned.
+ * @param {Array} arr the data array
+ * @param {Function} func the sorting function for non numeric obersevations
+ * @returns {Number} the low median of the data array
+ */
+export function medianHigh(arr, func = (a, b) => a - b) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const sorted = [...arr].sort(func);
+  return sorted[Math.floor(sorted.length / 2)];
+}
+
 export default {
   mean,
   harmonicMean,
   median,
   medianLow,
+  medianHigh,
 };
