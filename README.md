@@ -17,20 +17,24 @@ npm i stat-methods.js
 ## Documentation
 
 ### Table of contents
-[Averages and measures of central location](#Averages-and-measures-of-central-location)
--   [mean](#mean)
--   [harmonicMean](#harmonicMean)
--   [median](#median)
--   [medianLow](#medianLow)
--   [medianHigh](#medianHigh)
--   [medianGrouped](#medianGrouped)
--   [mode](#mode)
+1. [Averages and measures of central location](#Averages-and-measures-of-central-location)
+    - [mean](#mean)
+    - [harmonicMean](#harmonicMean)
+    - [median](#median)
+    - [medianLow](#medianLow)
+    - [medianHigh](#medianHigh)
+    - [medianGrouped](#medianGrouped)
+    - [mode](#mode)
 
-[Measures of spread](#Measures-of-spread)
--   [pVariance](#pVariance)
--   [pStdev](#pStdev)
--   [variance](#variance)
--   [stdev](#stdev)
+2. [Measures of spread](#Measures-of-spread)
+    - [pVariance](#pVariance)
+    - [pStdev](#pStdev)
+    - [variance](#variance)
+    - [stdev](#stdev)
+
+3. [Descriptive statistics](#Descriptive-statistics)
+    - [min](#min)
+    - [max](#max)
 
 ### Averages and measures of central location
 
@@ -212,7 +216,7 @@ If the data array is empty, the method returns `undefined`.
 
 ### Measures of spread
 
-These methods calculate a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
+These methods compute a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
 
 -   [pVariance](#pVariance): Population variance
 -   [pStdev](#pStdev): Population standard deviation
@@ -292,6 +296,37 @@ stdev([1, 2, 3, 4, 5], 3); // -> 1.5811388300841898
 ```
 
 Please refer to the [variance](#variance) method for further details.
+
+### Descriptive statistics
+
+These methods compute a summary statistic that quantitatively describes features of a data array.
+
+-   [min](#min): Minimum
+-   [max](#max): Maximum
+
+#### min 
+
+Return the minimum value of a numeric data array.
+
+The minimum is the smallest number in the data array.
+
+```js
+min([2.5, 3.25, -2, 5.75]); // -> -2
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+#### max
+
+Return the maximum value of a numeric data array.
+
+The maximum is the largest number in the data array.
+
+```js
+max([2.5, 3.25, -2, 5.75]); // -> 5.75
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
 
 ## License
 
