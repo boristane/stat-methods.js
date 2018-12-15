@@ -1,5 +1,5 @@
 {
-  "name": "stat-methods.js",
+  "name": "stat-methods",
   "version": "0.1.0",
   "description": "A module which provides functions for calculating mathematical statistics of numeric (Real-valued) data",
   "main": "index.js",
