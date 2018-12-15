@@ -1,6 +1,6 @@
 # stat-methods.js
 
-[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boristane/stat-methods.js&amp;utm_campaign=Badge_Grade)
 
 ## Installation
 
@@ -22,6 +22,7 @@ A library which provides methods for calculating mathematical statistics of nume
 
 [Measures of spread](#Measures-of-spread)
 -   [pVariance](#pVariance)
+-   [pStdev](#pStdev)
 
 ### Averages and measures of central location
 
@@ -205,7 +206,8 @@ If the data array is empty, the method returns `undefined`.
 
 These methods calculate a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
 
--  [pVariance](#pVariance): Population variance
+-   [pVariance](#pVariance): Population variance
+-   [pStdev](#pStdev): Population standard deviation
 
 #### pVariance
 
@@ -231,6 +233,18 @@ This method is appropriate for computing the variance of the entire population. 
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
 
+#### pStdev
+
+Return the standard deviation of a numeric data array.
+
+The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square rooth of the variance.
+
+```js
+pStdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 0.986893273527251
+pStdev([1, 2, 3, 4, 5], 3); // -> 1.4142135623730951
+```
+
+Please refer to the [pVariance](#pVariance) method for further details.
 
 ## License
 
