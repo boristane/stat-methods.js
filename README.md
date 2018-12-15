@@ -1,6 +1,8 @@
 # stat-methods
 
-[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boristane/stat-methods.js&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boristane/stat-methods.js&amp;utm_campaign=Badge_Grade)  [![](https://img.shields.io/bundlephobia/min/react.svg)](https://www.npmjs.com/package/stat-methods)  
+
+[![NPM](https://nodei.co/npm/stat-methods.png)](https://nodei.co/npm/stat-methods/) 
 
 ## Getting Started
 
@@ -245,7 +247,7 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 Return the population standard deviation of a numeric data array.
 
-The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square rooth of the variance.
+The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square root of the variance.
 
 ```js
 pStdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 0.986893273527251
@@ -282,7 +284,7 @@ If the data array is empty, contains a single value or contains a non finite `Nu
 
 Return the sample standard deviation of a numeric data array.
 
-The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square rooth of the variance.
+The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square root of the variance.
 
 ```js
 stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 1.0810874155219827
