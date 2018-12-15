@@ -17,7 +17,7 @@ describe('Averages and measures of central location', () => {
     expect(mean([])).toBeUndefined();
     expect(mean(3)).toBeUndefined();
     expect(mean([3])).toBe(3);
-    expect(mean([3, 2.5, 2e2, 5.75])).toBe(52.8125);
+    expect(mean([3, 2.5, 200, 5.75])).toBe(52.8125);
     testUndefinedWithNullable(mean);
   });
 
