@@ -10,15 +10,30 @@ A library which provides methods for calculating mathematical statistics of nume
 
 ## Documentation
 
+#### Table of contents
+[Averages and measures of central location](#Averages-and-measures-of-central-location)
+-   [mean](#mean)
+-   [harmonicMean](#harmonicMean)
+-   [median](#median)
+-   [medianLow](#medianLow)
+-   [medianHigh](#medianHigh)
+-   [medianGrouped](#medianGrouped)
+-   [mode](#mode)
+
+[Measures of spread](#Measures-of-spread)
+-   [pVariance](#pVariance)
+
 ### Averages and measures of central location
 
-These methods calculate an average or typical value from a population or sample.
+These methods compute an average or typical value from a population or sample.
+
 -   [mean](#mean): Arithmetic mean ('average')
 -   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
 -   [median](#median): Median (middle value)
 -   [medianLow](#medianLow): Low median
 -   [medianHigh](#medianHigh): High median
--   [mode](#mode): modes (most common data points)
+-   [medianGrouped](#medianGrouped): Median of grouped data.
+-   [mode](#mode): Modes (most common data points) of descrete data
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -110,7 +125,7 @@ function compareFunction(elt1, elt2) {
 medianLow(['a', 'c', 'b', 'd'], compareFunction); // -> 'b'
 ```
 
-By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function with numerical data might result in invalid results.
+By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function might result in invalid results.
 
 If the data array is empty, the method returns `undefined`.
 
@@ -141,7 +156,7 @@ function compareFunction(elt1, elt2) {
 medianHigh(['a', 'c', 'b', 'd'], compareFunction); // -> 'c'
 ```
 
-By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function with numerical data might result in invalid results.
+By default, the compare function orders the data array in ascending order, in the numerical sense. Using arbitrary values for the compare function might result in invalid results.
 
 If the data array is empty, the method returns `undefined`.
 
@@ -172,7 +187,7 @@ The mode is the most common data point from the data array. The method `mode` re
 ```js
 mode([1, 1, 2]); // -> [1]
 ```
-If there are multiple data points with the same number of occurences in the data array, there are multiple modes and they are all returned as an array.
+If there are multiple data points with the same larger number of occurences in the data array, there are multiple modes and they are all returned as an array.
 
 ```js
 mode([1, 2, 3, 3, 4, 4]); // [3, 4]
@@ -185,6 +200,37 @@ mode(['a', 'c', 'b', 'd', 'c']); // -> ['c']
 ```
 
 If the data array is empty, the method returns `undefined`.
+
+### Measures of spread
+
+These methods calculate a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
+
+-  [pVariance](#pVariance): Population variance
+
+#### pVariance
+
+Return the population variance of a numeric data array.
+
+The variance, or second moment about the mean, is a measure of the spread of a sample or population. A large variance indicates that the data is spread out; a small variance indicates it is clustered closely around the mean.
+
+```js
+pVariance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]); // -> 1.25
+```
+
+The mean of the data array can be provided as an optional argument if previously computed.
+
+```js
+const pop = [1, 2, 3, 4, 5];
+const mu = mean(pop); // -> 3
+pVariance(pop, mu); // -> 2
+```
+
+If ommited, the mean is automatically computed. The function does not verify that the provided mean is accurate. Using arbitrary values for the mean might lead to invalid results.
+
+This method is appropriate for computing the variance of the entire population. To estimate the variance from a sample, the [variance](#variance) method is recommended.
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
 
 ## License
 

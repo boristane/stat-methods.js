@@ -39,8 +39,8 @@ export function harmonicMean(arr) {
  * Return the median (middle value) of a numeric data array.
  * The median is the value separating the higher half from the lower half of a data sample.
  * If there is an odd number of observations, the middle one is picked.
- * If there is an even number of observations, then there is no single middle value;
- * the median is then usually defined to be the mean of the two middle values.
+ * If there is an even number of observations,
+ * the median is defined as the mean of the two middle values.
  * @param {Number[]} arr the data array
  * @returns {Number} the median of the data array
  */
@@ -125,7 +125,7 @@ export function medianGrouped(arr, width = 1) {
 /**
  * Return the mode(s) of a data array.
  * The mode is the most common data point from the data array.
- * If there are multiple data points with the same number of occurences in the data array,
+ * If there are multiple data points with the same larger number of occurences in the data array,
  * there are multiple modes and they are all returned as an array.
  * @param {Array} arr the data array
  * @returns {Array} the modes of the data array
