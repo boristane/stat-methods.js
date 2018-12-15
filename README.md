@@ -10,7 +10,7 @@ A library which provides methods for calculating mathematical statistics of nume
 
 ## Documentation
 
-#### Table of contents
+### Table of contents
 [Averages and measures of central location](#Averages-and-measures-of-central-location)
 -   [mean](#mean)
 -   [harmonicMean](#harmonicMean)
@@ -23,6 +23,7 @@ A library which provides methods for calculating mathematical statistics of nume
 [Measures of spread](#Measures-of-spread)
 -   [pVariance](#pVariance)
 -   [pStdev](#pStdev)
+-   [variance](#variance)
 
 ### Averages and measures of central location
 
@@ -34,7 +35,7 @@ These methods compute an average or typical value from a population or sample.
 -   [medianLow](#medianLow): Low median
 -   [medianHigh](#medianHigh): High median
 -   [medianGrouped](#medianGrouped): Median of grouped data.
--   [mode](#mode): Modes (most common data points) of descrete data
+-   [mode](#mode): Modes (most common data points) of discrete data
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -208,6 +209,7 @@ These methods calculate a measure of the variability in a sample or population, 
 
 -   [pVariance](#pVariance): Population variance
 -   [pStdev](#pStdev): Population standard deviation
+-   [variance](#variance): Sample variance
 
 #### pVariance
 
@@ -245,6 +247,30 @@ pStdev([1, 2, 3, 4, 5], 3); // -> 1.4142135623730951
 ```
 
 Please refer to the [pVariance](#pVariance) method for further details.
+
+#### variance
+
+Return the sample variance of a numeric data array.
+
+The variance, or second moment about the mean, is a measure of the spread of a sample or population. A large variance indicates that the data is spread out; a small variance indicates it is clustered closely around the mean.
+
+```js
+variance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]); // -> 1.4285714285714286
+```
+
+The mean of the data array can be provided as an optional argument if previously computed.
+
+```js
+const sample = [1, 2, 3, 4, 5];
+const xBAr = mean(sample); // -> 3
+variance(sample, xBar); // -> 2.5
+```
+
+If ommited, the mean is automatically computed. The function does not verify that the provided mean is accurate. Using arbitrary values for the mean might lead to invalid results.
+
+This method is appropriate for computing the variance of a sample from a population. To compute the variance of an entire population, the [pVariance](#pVariance) method is recommended.
+
+If the data array is empty, contains a single value or contains a non finite `Number`, the method returns `undefined`.
 
 ## License
 

@@ -49,7 +49,23 @@ export function pStdev(arr, mu) {
   return v === undefined ? v : Math.sqrt(v);
 }
 
+/**
+ * Return the sample variance of a numeric data array.
+ * The mean of the data array can be provided as an optional argument if previously computed.
+ * If ommited, the mean is computed.
+ * The function does not verify that the provided mean is accurate.
+ * @param {Number[]} arr the data array
+ * @param {Number} mu the mean of the data array
+ * @returns {Number} the population variance of the data array
+ */
+export function variance(arr, xBar) {
+  const sum = squareDeviationSum(arr, xBar);
+  if (sum === undefined || arr.length <= 1) return undefined;
+  return sum / (arr.length - 1);
+}
+
 export default {
   pVariance,
   pStdev,
+  variance,
 };
