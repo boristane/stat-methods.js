@@ -1,8 +1,8 @@
 {
   "name": "stat-methods",
   "version": "0.1.1",
-  "description": "A module which provides functions for calculating mathematical statistics of numeric (Real-valued) data",
-  "main": "index.js",
+  "description": "A library which provides functions for calculating mathematical statistics of numeric (Real-valued) data",
+  "main": "dist/stat-methods.js",
   "scripts": {
     "test": "jest",
     "test-ci": "jest -i --coverage --config jest.config.ci.js",
