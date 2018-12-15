@@ -29,7 +29,7 @@ describe('Averages and measures of central location', () => {
     expect(harmonicMean([NaN, 2.5, 3, 5.75])).toBeUndefined();
     expect(harmonicMean([])).toBeUndefined();
     expect(harmonicMean(3)).toBeUndefined();
-    expect(harmonicMean([3])).toBe(3)
+    expect(harmonicMean([3])).toBe(3);
     testUndefinedWithNullable(harmonicMean);
   });
 
@@ -42,7 +42,7 @@ describe('Averages and measures of central location', () => {
     expect(median([NaN, 2.5, 3, 5.75])).toBeUndefined();
     expect(median([])).toBeUndefined();
     expect(median(3)).toBeUndefined();
-    expect(median([3])).toBe(3)
+    expect(median([3])).toBe(3);
     testUndefinedWithNullable(median);
   });
 
@@ -54,7 +54,7 @@ describe('Averages and measures of central location', () => {
     expect(medianLow(['a', 'c', 'b', 'd'], (a, b) => a.charCodeAt(0) - b.charCodeAt(0))).toBe('b');
     expect(medianLow([])).toBeUndefined();
     expect(medianLow(3)).toBeUndefined();
-    expect(medianLow([3])).toBe(3)
+    expect(medianLow([3])).toBe(3);
     testUndefinedWithNullable(medianLow);
   });
 
@@ -66,7 +66,7 @@ describe('Averages and measures of central location', () => {
     expect(medianHigh(['a', 'c', 'b', 'd'], (a, b) => a.charCodeAt(0) - b.charCodeAt(0))).toBe('c');
     expect(medianHigh([])).toBeUndefined();
     expect(medianHigh(3)).toBeUndefined();
-    expect(medianHigh([3])).toBe(3)
+    expect(medianHigh([3])).toBe(3);
     testUndefinedWithNullable(medianHigh);
   });
 
@@ -76,7 +76,7 @@ describe('Averages and measures of central location', () => {
     expect(mode(['a', 'c', 'b', 'd', 'c'])).toEqual(['c']);
     expect(mode([])).toBeUndefined();
     expect(mode(3)).toBeUndefined();
-    expect(mode([3])).toEqual([3])
+    expect(mode([3])).toEqual([3]);
     testUndefinedWithNullable(mode);
   });
 
@@ -88,7 +88,7 @@ describe('Averages and measures of central location', () => {
     expect(medianGrouped([1, 3, 3, 5, 7], 2)).toBe(3.5);
     expect(medianGrouped([])).toBeUndefined();
     expect(medianGrouped(3)).toBeUndefined();
-    expect(medianGrouped([3])).toEqual(3)
+    expect(medianGrouped([3])).toEqual(3);
     testUndefinedWithNullable(medianGrouped);
   });
 });
