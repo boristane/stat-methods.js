@@ -3,6 +3,7 @@ import {
   pVariance,
   pStdev,
   variance,
+  stdev,
 } from '../src/spread';
 
 describe('Measures of spread', () => {
@@ -38,5 +39,16 @@ describe('Measures of spread', () => {
     expect(variance(3)).toBeUndefined();
     expect(variance([3])).toBeUndefined();
     testUndefinedWithNullable(variance);
+  });
+
+  test('Sample Standard Deviation', () => {
+    expect(stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])).toBe(1.0810874155219827);
+    expect(stdev([1, 2, 3, 4, 5], 3)).toBe(1.5811388300841898);
+    expect(stdev(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(stdev([NaN, 2.5, 3, 5.75])).toBeUndefined();
+    expect(stdev([])).toBeUndefined();
+    expect(stdev(3)).toBeUndefined();
+    expect(stdev([3])).toBeUndefined();
+    testUndefinedWithNullable(stdev);
   });
 });

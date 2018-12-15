@@ -2,11 +2,15 @@
 
 [![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boristane/stat-methods.js&amp;utm_campaign=Badge_Grade)
 
-## Installation
-
 ## Getting Started
 
 A library which provides methods for calculating mathematical statistics of numeric (Real-valued) data. The library is heavily inspired by The Python Standard Library [statistics](https://docs.python.org/3/library/statistics.html) module.
+
+## Installation
+
+```bash
+npm i stat-methods.js
+```
 
 ## Documentation
 
@@ -24,6 +28,7 @@ A library which provides methods for calculating mathematical statistics of nume
 -   [pVariance](#pVariance)
 -   [pStdev](#pStdev)
 -   [variance](#variance)
+-   [stdev](#stdev)
 
 ### Averages and measures of central location
 
@@ -210,6 +215,7 @@ These methods calculate a measure of the variability in a sample or population, 
 -   [pVariance](#pVariance): Population variance
 -   [pStdev](#pStdev): Population standard deviation
 -   [variance](#variance): Sample variance
+-   [stdev](#stdev): Sample standard deviation
 
 #### pVariance
 
@@ -237,7 +243,7 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### pStdev
 
-Return the standard deviation of a numeric data array.
+Return the population standard deviation of a numeric data array.
 
 The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square rooth of the variance.
 
@@ -271,6 +277,19 @@ If ommited, the mean is automatically computed. The function does not verify tha
 This method is appropriate for computing the variance of a sample from a population. To compute the variance of an entire population, the [pVariance](#pVariance) method is recommended.
 
 If the data array is empty, contains a single value or contains a non finite `Number`, the method returns `undefined`.
+
+#### stdev
+
+Return the sample standard deviation of a numeric data array.
+
+The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square rooth of the variance.
+
+```js
+stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 1.0810874155219827
+stdev([1, 2, 3, 4, 5], 3); // -> 1.5811388300841898
+```
+
+Please refer to the [variance](#variance) method for further details.
 
 ## License
 
