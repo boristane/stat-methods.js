@@ -17,24 +17,28 @@ npm i stat-methods
 ## Documentation
 
 ### Table of contents
-1. [Averages and measures of central location](#Averages-and-measures-of-central-location)
-    - [mean](#mean)
-    - [harmonicMean](#harmonicMean)
-    - [median](#median)
-    - [medianLow](#medianLow)
-    - [medianHigh](#medianHigh)
-    - [medianGrouped](#medianGrouped)
-    - [mode](#mode)
+1.  [Averages and measures of central location](#Averages-and-measures-of-central-location)
+    -   [mean](#mean)
+    -   [harmonicMean](#harmonicMean)
+    -   [median](#median)
+    -   [medianLow](#medianLow)
+    -   [medianHigh](#medianHigh)
+    -   [medianGrouped](#medianGrouped)
+    -   [mode](#mode)
 
-2. [Measures of spread](#Measures-of-spread)
-    - [pVariance](#pVariance)
-    - [pStdev](#pStdev)
-    - [variance](#variance)
-    - [stdev](#stdev)
+2.  [Measures of spread](#Measures-of-spread)
+    -   [pVariance](#pVariance)
+    -   [pStdev](#pStdev)
+    -   [variance](#variance)
+    -   [stdev](#stdev)
 
-3. [Descriptive statistics](#Descriptive-statistics)
-    - [min](#min)
-    - [max](#max)
+3.  [Descriptive statistics](#Descriptive-statistics)
+    -   [min](#min)
+    -   [max](#max)
+  
+4.  [Measures of similarity](#Measures-of-similarity)
+    -   [covariance](#covariance)
+    -   [correlation](#correlation)
 
 ### Averages and measures of central location
 
@@ -327,6 +331,51 @@ max([2.5, 3.25, -2, 5.75]); // -> 5.75
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+### Measures of similarity
+
+These methods compute a measure of the similarity between samples or populations.
+
+-   [covariance](#covariance): Joint variability
+-   [correlation](#correlation): Linear relationship
+
+#### covariance
+
+Return the sample covariance between two numeric data arrays.
+
+The covariance is a measure of the joint variability of two data arrays.
+
+```js
+covariance([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // -> 146.1
+```
+The `covariance` method will return `undefined` in the following cases:
+
+-   At least one of the arguments is not an array.
+-   At least one of the data arrays contains at least one non finite `Number`.
+-   At least one of the data arrays contains less than two elements.
+-   The two data arrays do not have the same number of elements.
+
+```js
+covariance(3, [2, 2]); // -> undefined
+covariance([3, 2.5, 5.1, 5.75], ['a', 2.5, 'b', 5.75]); // -> undefined
+covariance([NaN, 2.5, 3, 5.75], [3, 2.5, 5.1, 5.75]); // -> undefined
+covariance([2, 1], [3, 2.5, 5.1, 5.75]); // -> undefined
+covariance([3], [2]); // -> undefined
+```
+
+#### correlation
+
+Return the correlation between two numeric data arrays.
+
+The correlation is a measure of how close two datasets are to having a linear relationship.
+
+```js
+correlation([1, 2, 3, 5], [1, 3, 8, 10]); // -> 0.9519450934357727
+```
+
+The correlation is computed as the ratio between the covariance and the product of the standard deviations of the tow data arrays. The correlations is between -1 and 1.
+
+Please refer to the `covariance` method for further details.
 
 ## License
 
