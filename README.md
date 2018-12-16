@@ -6,12 +6,12 @@
 
 ## Getting Started
 
-A library which provides methods for calculating mathematical statistics of numeric (Real-valued) data. The library is heavily inspired by The Python Standard Library [statistics](https://docs.python.org/3/library/statistics.html) module.
+A library which provides methods for calculating mathematical statistics of numeric data. The library is heavily inspired by The Python Standard Library [statistics](https://docs.python.org/3/library/statistics.html) module.
 
 ## Installation
 
 ```bash
-npm i stat-methods.js
+npm i stat-methods
 ```
 
 ## Documentation

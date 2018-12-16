@@ -1,7 +1,7 @@
 {
   "name": "stat-methods",
   "version": "0.1.2",
-  "description": "A library which provides functions for calculating mathematical statistics of numeric (Real-valued) data",
+  "description": "A library which provides functions for calculating mathematical statistics of numeric data",
   "main": "dist/stat-methods.js",
   "scripts": {
     "test": "jest",
@@ -15,7 +15,7 @@
     "url": "git+https://github.com/boristane/stat-methods.js.git"
   },
   "keywords": [
-    "statistics"
+    "statistics, maths, numeric"
   ],
   "author": "Boris Tane",
   "license": "MIT",
