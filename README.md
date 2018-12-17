@@ -35,6 +35,7 @@ npm i stat-methods
 3.  [Descriptive statistics](#Descriptive-statistics)
     -   [min](#min)
     -   [max](#max)
+    -   [product](#product)
   
 4.  [Measures of similarity](#Measures-of-similarity)
     -   [covariance](#covariance)
@@ -328,6 +329,16 @@ The maximum is the largest number in the data array.
 
 ```js
 max([2.5, 3.25, -2, 5.75]); // -> 5.75
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+#### product
+
+Return the product of all entries in a numeric data array.
+
+```js
+product([1, 2, 3, 4]); // -> 24
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.

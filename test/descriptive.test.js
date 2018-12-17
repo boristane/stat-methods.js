@@ -2,6 +2,7 @@ import{ testUndefinedWithNullable } from './utils';
 import {
   min,
   max,
+  product,
 } from '../src/descriptive';
 
 describe('Descriptive Statistics', () => {
@@ -28,4 +29,19 @@ describe('Descriptive Statistics', () => {
     expect(max([3, 2.5, 200, 5.75])).toBe(200);
     testUndefinedWithNullable(max);
   });
+
+  test('Product', () => {
+    expect(product([1,2,3,4,5])).toBe(120);
+    expect(product([2.5, 3.25, 2, 5.75])).toBe(93.4375);
+    expect(product([NaN, 2, 3, 4])).toBeUndefined();
+    expect(product([])).toBeUndefined();
+    expect(product(['a', 2, 3, 4])).toBeUndefined();
+    expect(product(["hello", 3, 4, 5])).toBeUndefined();
+    expect(product(3)).toBeUndefined();
+    expect(product([3])).toBe(3);
+    expect(product([5, 8, 1.2, 0])).toBe(0);
+    expect(product([5, 8, 1.2, null])).toBeUndefined();
+    testUndefinedWithNullable(product);
+  });
+
 });
