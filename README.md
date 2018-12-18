@@ -57,7 +57,11 @@ Note: The methods do not require the data given to them to be sorted.
 
 #### mean
 
-Returns the sample arithmetic mean of a numeric data array.
+```js
+mean(arr);
+```
+
+Returns the sample arithmetic mean of a numeric data array `arr`.
 
 The arithmetic mean is the sum of the data divided by the number of data points.
 
@@ -76,7 +80,11 @@ mean(3); // -> undefined
 
 #### harmonicMean
 
-Return the harmonic mean of a numeric data array.
+```js
+harmonicMean(arr);
+```
+
+Return the harmonic mean of a numeric data array `arr`.
 
 The harmonic mean is the reciprocal of the arithmetic mean of the reciprocals of the data. It is the number of data points divided by the sum of the reciprocals of the data points. For example, the harmonic mean of three values `a`, `b` and `c` will be equivalent to `3/(1/a + 1/b + 1/c)`.
 
@@ -86,7 +94,7 @@ harmonicMean([2.5, 3, 10]); // -> 3.5999999999999996
 harmonicMean([2.5, 3, 10]) * 10; // -> 36
 ```
 
-The `harmonicMean()` is typically appropriate compared with the arithmetic `mean()` when evaluating the average of rates or ratios (for example speeds or densities).
+The `harmonicMean` is typically appropriate compared with the arithmetic `mean` when evaluating the average of rates or ratios (for example speeds or densities).
 
 If the data array contains elements with value `0`, the method returns `undefined`.
 
@@ -98,7 +106,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### median
 
-Return the median (middle value) of a numeric data array.
+```js
+median(arr);
+```
+
+Return the median (middle value) of a numeric data array `arr`.
 
 The median is the value separating the higher half from the lower half of a data sample. The `median` method uses the “mean of middle two” method:
 
@@ -118,7 +130,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### medianLow
 
-Return the low median of a data array.
+```js
+medianLow(arr[, compareFunction]);
+```
+
+Return the low median of a data array `arr`. An optional `compareFunction` parameter can be provided for non numerica data arrays.
 
 The low median is always a member of the data set. The `medianLow` method accepts both numeric and non numeric data arrays.
 
@@ -149,7 +165,11 @@ If the data array is empty, the method returns `undefined`.
 
 #### medianHigh
 
-Return the high median of a data array.
+```js
+medianHigh(arr[, compareFunction]);
+```
+
+Return the high median of a data array `arr`. An optional `compareFunction` parameter can be provided for non numerica data arrays.
 
 The high median is always a member of the data set. The `medianHigh` method accepts both numeric and non numeric data arrays.
 
@@ -180,7 +200,11 @@ If the data array is empty, the method returns `undefined`.
 
 #### medianGrouped
 
-Return the median (middle value) of grouped continuous numeric data, using interpolation.
+```js
+medianGrouped(arr[, width]);
+```
+
+Return the median (middle value) of grouped continuous numeric data `arr`, using interpolation.
 
 ```js
 medianGrouped([52, 52, 53, 54]); // -> 52.5
@@ -198,7 +222,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### mode
 
-Return the mode(s) of a data array.
+```js
+mode(arr);
+```
+
+Return the mode(s) of a data array `arr`.
 
 The mode is the most common data point from the data array. The method `mode` returns the mode(s) in an array.
 
@@ -230,7 +258,11 @@ These methods compute a measure of the variability in a sample or population, ho
 
 #### pVariance
 
-Return the population variance of a numeric data array.
+```js
+pVariance(arr[, mu]);
+```
+
+Return the population variance of a numeric data array `arr`.
 
 The variance, or second moment about the mean, is a measure of the spread of a sample or population. A large variance indicates that the data is spread out; a small variance indicates it is clustered closely around the mean.
 
@@ -238,7 +270,7 @@ The variance, or second moment about the mean, is a measure of the spread of a s
 pVariance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]); // -> 1.25
 ```
 
-The mean of the data array can be provided as an optional argument if previously computed.
+The mean of the data array `mu` can be provided as an optional argument if previously computed.
 
 ```js
 const pop = [1, 2, 3, 4, 5];
@@ -254,20 +286,31 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### pStdev
 
-Return the population standard deviation of a numeric data array.
+```js
+pStdev(arr[, mu]);
+```
+
+Return the population standard deviation of a numeric data array `arr`.
 
 The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square root of the variance.
 
+The mean of the data array `mu` can be provided as an optional argument if previously computed.
+
 ```js
 pStdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 0.986893273527251
-pStdev([1, 2, 3, 4, 5], 3); // -> 1.4142135623730951
+const mu = 3;
+pStdev([1, 2, 3, 4, 5], mu); // -> 1.4142135623730951
 ```
 
 Please refer to the [pVariance](#pVariance) method for further details.
 
 #### variance
 
-Return the sample variance of a numeric data array.
+```js
+variance(arr[, xBar]);
+```
+
+Return the sample variance of a numeric data array `arr`.
 
 The variance, or second moment about the mean, is a measure of the spread of a sample or population. A large variance indicates that the data is spread out; a small variance indicates it is clustered closely around the mean.
 
@@ -275,7 +318,7 @@ The variance, or second moment about the mean, is a measure of the spread of a s
 variance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25]); // -> 1.4285714285714286
 ```
 
-The mean of the data array can be provided as an optional argument if previously computed.
+The mean of the data array `xBar` can be provided as an optional argument if previously computed.
 
 ```js
 const sample = [1, 2, 3, 4, 5];
@@ -291,13 +334,20 @@ If the data array is empty, contains a single value or contains a non finite `Nu
 
 #### stdev
 
-Return the sample standard deviation of a numeric data array.
+```js
+stdev(arr[, xBar]);
+```
+
+Return the sample standard deviation of a numeric data array `arr`.
 
 The standard deviation is a measure that is used to quantify the amount of variation or dispersion of a set of data values, computed as the square root of the variance.
 
+The mean of the data array `xBar` can be provided as an optional argument if previously computed.
+
 ```js
 stdev([1.5, 2.5, 2.5, 2.75, 3.25, 4.75]); // -> 1.0810874155219827
-stdev([1, 2, 3, 4, 5], 3); // -> 1.5811388300841898
+const xBar = 3;
+stdev([1, 2, 3, 4, 5], xBar); // -> 1.5811388300841898
 ```
 
 Please refer to the [variance](#variance) method for further details.
@@ -308,10 +358,15 @@ These methods compute a summary statistic that quantitatively describes features
 
 -   [min](#min): Minimum
 -   [max](#max): Maximum
+-   [product](#product): Product of all the elements
 
-#### min 
+#### min
 
-Return the minimum value of a numeric data array.
+```js
+min(arr);
+```
+
+Return the minimum value of a numeric data array `arr`.
 
 The minimum is the smallest number in the data array.
 
@@ -323,7 +378,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### max
 
-Return the maximum value of a numeric data array.
+```js
+max(arr);
+```
+
+Return the maximum value of a numeric data array `arr`.
 
 The maximum is the largest number in the data array.
 
@@ -335,7 +394,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### product
 
-Return the product of all entries in a numeric data array.
+```js
+product(arr);
+```
+
+Return the product of all elements of a numeric data array `arr`.
 
 ```js
 product([1, 2, 3, 4]); // -> 24
@@ -352,7 +415,11 @@ These methods compute a measure of the similarity between samples or populations
 
 #### covariance
 
-Return the sample covariance between two numeric data arrays.
+```js
+covariance(x, y);
+```
+
+Return the sample covariance between two numeric data arrays `x` and `y`.
 
 The covariance is a measure of the joint variability of two data arrays.
 
@@ -376,7 +443,11 @@ covariance([3], [2]); // -> undefined
 
 #### correlation
 
-Return the correlation between two numeric data arrays.
+```js
+correlation(x, y);
+```
+
+Return the correlation between two numeric data arrays `x` and `y`.
 
 The correlation is a measure of how close two datasets are to having a linear relationship.
 
