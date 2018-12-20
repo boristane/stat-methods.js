@@ -1,6 +1,7 @@
-import{ testUndefinedWithNullable } from './utils';
+import { testUndefinedWithNullable } from './utils';
 import { mean,
         harmonicMean,
+        geometricMean,
         median,
         medianLow,
         medianHigh,
@@ -31,6 +32,21 @@ describe('Averages and measures of central location', () => {
     expect(harmonicMean(3)).toBeUndefined();
     expect(harmonicMean([3])).toBe(3);
     testUndefinedWithNullable(harmonicMean);
+  });
+
+  test('Geometric mean', () => {
+    expect(geometricMean([1, 2, 4])).toBe(2);
+    expect(geometricMean([4, 1, 1/32])).toBe(0.5);
+    expect(geometricMean([1.1, 1.4, 3.5, 9.5])).toBe(2.6750265241846307);
+    expect(geometricMean([2.5, 0, 10])).toBe(0);
+    expect(geometricMean([-1, 2, 4])).toBe(-2);
+    expect(geometricMean([-1, 2, 4, 2])).toBeUndefined();
+    expect(geometricMean(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(geometricMean([NaN, 2.5, 3, 5.75])).toBeUndefined();
+    expect(geometricMean([])).toBeUndefined();
+    expect(geometricMean(3)).toBeUndefined();
+    expect(geometricMean([3])).toBe(3);
+    testUndefinedWithNullable(geometricMean);
   });
 
   test('Median', () => {

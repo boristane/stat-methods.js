@@ -1,4 +1,5 @@
-import { getAllIndexes } from './utils';
+import { product } from './descriptive';
+import { getAllIndexes, nthRoot } from './utils';
 
 /**
  * Return the sample arithmetic mean of a numeric data array.
@@ -33,6 +34,21 @@ export function harmonicMean(arr) {
     sum += 1 / arr[i];
   }
   return arr.length / sum;
+}
+
+/**
+ * Return the geometric mean of a numeric data array.
+ * The geometric mean is the nth root of the product of the n data points.
+ * For example, the geometric mean of three values a, b and c
+ * will be equivalent to (abc)^(1/3).
+ * @param {Number[]} arr the data array
+ * @returns {Number} the geometric mean of the data array
+ */
+export function geometricMean(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const prod = product(arr);
+  if (!Number.isFinite(prod)) return undefined;
+  return nthRoot(prod, arr.length);
 }
 
 /**
@@ -156,6 +172,7 @@ export function mode(arr) {
 export default {
   mean,
   harmonicMean,
+  geometricMean,
   median,
   medianLow,
   medianHigh,

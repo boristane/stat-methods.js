@@ -104,6 +104,26 @@ harmonicMean([2.5, 3, 0]); // -> undefined
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
 
+#### geometricMean
+
+Return the geometric mean of a numeric data array.
+
+The geometric mean is the nth root of the product of the n data points. For example, the geometric mean of three values `a`, `b` and `c` will be equivalent to `(abc)^(1/3)`.
+
+```js
+geometricMean([4, 1, 1/32]); // -> 0.5
+```
+
+The `geometricMean()` indicates the central tendency or typical value of a set of numbers is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
+
+If the data array contains an even total number of elements and an odd number of negative elements, the method returns `undefined`.
+
+```js
+geometricMean([1, -2, 3, 4]); // -> undefined
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
 #### median
 
 ```js
