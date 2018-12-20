@@ -1,4 +1,4 @@
-import{ testUndefinedWithNullable } from './utils';
+import { testUndefinedWithNullable } from './utils';
 import { covariance,
         correlation,
        } from '../src/similarity';

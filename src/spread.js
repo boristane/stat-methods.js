@@ -1,7 +1,7 @@
 import { mean } from './central';
 
 /**
- * Return the sum of the sqare deviations from the mean of a numeric data array.
+ * Return the sum of the square deviations from the mean of a numeric data array.
  * The mean of the data array can be provided as an optional argument if previously computed.
  * If ommited, the mean is computed.
  * The function does not verify that the provided mean is accurate.
