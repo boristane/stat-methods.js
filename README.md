@@ -20,6 +20,7 @@ npm i stat-methods
 1.  [Averages and measures of central location](#Averages-and-measures-of-central-location)
     -   [mean](#mean)
     -   [harmonicMean](#harmonicMean)
+    -   [geometricMean](#geometricMean)
     -   [median](#median)
     -   [medianLow](#medianLow)
     -   [medianHigh](#medianHigh)
@@ -47,6 +48,7 @@ These methods compute an average or typical value from a population or sample.
 
 -   [mean](#mean): Arithmetic mean ('average')
 -   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
+-   [geometricMean](#geometricMean): Geometric mean
 -   [median](#median): Median (middle value)
 -   [medianLow](#medianLow): Low median
 -   [medianHigh](#medianHigh): High median
@@ -106,15 +108,19 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 #### geometricMean
 
-Return the geometric mean of a numeric data array.
+```js
+geometricMean(arr);
+```
 
-The geometric mean is the nth root of the product of the n data points. For example, the geometric mean of three values `a`, `b` and `c` will be equivalent to `(abc)^(1/3)`.
+Return the geometric mean of a numeric data array `arr`.
+
+The geometric mean is the nth root of the product of the n data points. For example, the geometric mean of three values `a`, `b` and `c` will be equivalent to `(a*b*c) ^ (1/3)`.
 
 ```js
 geometricMean([4, 1, 1/32]); // -> 0.5
 ```
 
-The `geometricMean()` indicates the central tendency or typical value of a set of numbers is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
+The `geometricMean()` indicates the central tendency or typical value of a set of numbers and is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
 
 If the data array contains an even total number of elements and an odd number of negative elements, the method returns `undefined`.
 
