@@ -8,7 +8,7 @@
     "test-ci": "jest -i --coverage --config jest.config.ci.js",
     "test-changed": "jest -o",
     "build": "rollup --config",
-    "release": "release-it"
+    "release": "npm run build && release-it"
   },
   "repository": {
     "type": "git",
