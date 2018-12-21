@@ -90,6 +90,8 @@ describe('Averages and measures of central location', () => {
     expect(mode([1, 2, 3, 3, 4, 4])).toEqual([3, 4]);
     expect(mode([1, 1, 2])).toEqual([1]);
     expect(mode(['a', 'c', 'b', 'd', 'c'])).toEqual(['c']);
+    expect(mode(['a', 2.5, 'b', 5.75])).toEqual(['a', 2.5, 'b', 5.75]);
+    expect(mode([NaN, 2.5, 2.5, 5.75])).toEqual([2.5]);
     expect(mode([])).toBeUndefined();
     expect(mode(3)).toBeUndefined();
     expect(mode([3])).toEqual([3]);
@@ -102,6 +104,8 @@ describe('Averages and measures of central location', () => {
     expect(medianGrouped([59, 65, 61, 62, 53, 55, 60, 70, 64, 56, 58, 58, 62, 62, 68, 65, 56, 59, 68, 61, 67], 5)).toBe(61.4375);
     expect(medianGrouped([1, 3, 3, 5, 7])).toBe(3.25);
     expect(medianGrouped([1, 3, 3, 5, 7], 2)).toBe(3.5);
+    expect(medianGrouped(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(medianGrouped([NaN, 2.5, 3, 5.75])).toBeUndefined();
     expect(medianGrouped([])).toBeUndefined();
     expect(medianGrouped(3)).toBeUndefined();
     expect(medianGrouped([3])).toEqual(3);
