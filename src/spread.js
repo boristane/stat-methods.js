@@ -15,7 +15,6 @@ function squareDeviationSum(arr, mu) {
   if (m === undefined) return undefined;
   let sum = 0;
   for (let i = 0; i < arr.length; i += 1) {
-    if (!Number.isFinite(arr[i])) return undefined;
     sum += (arr[i] - m) ** 2;
   }
   return sum;
