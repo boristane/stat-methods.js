@@ -1,13 +1,15 @@
 import { testUndefinedWithNullable } from './utils';
-import { mean,
-        harmonicMean,
-        geometricMean,
-        median,
-        medianLow,
-        medianHigh,
-        mode,
-        medianGrouped,
-       } from '../src/central';
+import { 
+  mean,
+  harmonicMean,
+  geometricMean,
+  median,
+  medianLow,
+  medianHigh,
+  mode,
+  medianGrouped,
+  quartiles,
+} from '../src/central';
 
 describe('Averages and measures of central location', () => {
   test('Mean', () => {
@@ -110,5 +112,19 @@ describe('Averages and measures of central location', () => {
     expect(medianGrouped(3)).toBeUndefined();
     expect(medianGrouped([3])).toEqual(3);
     testUndefinedWithNullable(medianGrouped);
+  });
+
+  test('Quartiles', () => {
+    expect(quartiles([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49])).toEqual([15, 40, 43]);
+    expect(quartiles([7, 15, 36, 39, 40, 41])).toEqual([15, 37.5, 40]);
+    expect(quartiles([2, 2, 3, 4])).toEqual([2, 2.5, 3.5]);
+    expect(quartiles(['a', 2.5, 'b', 5.75, 5])).toBeUndefined();
+    expect(quartiles([NaN, 2.5, 3, 5.75, 12])).toBeUndefined();
+    expect(quartiles([])).toBeUndefined();
+    expect(quartiles(3)).toBeUndefined();
+    expect(quartiles([3])).toBeUndefined();
+    expect(quartiles([2, 3])).toBeUndefined();
+    expect(quartiles([3, 4, 5])).toBeUndefined();
+    testUndefinedWithNullable(quartiles);
   });
 });

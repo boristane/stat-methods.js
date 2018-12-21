@@ -25,6 +25,7 @@ npm i stat-methods
     -   [medianLow](#medianLow)
     -   [medianHigh](#medianHigh)
     -   [medianGrouped](#medianGrouped)
+    -   [quartiles](#quartiles)
     -   [mode](#mode)
 
 2.  [Measures of spread](#Measures-of-spread)
@@ -54,6 +55,7 @@ These methods compute an average or typical value from a population or sample.
 -   [medianLow](#medianLow): Low median
 -   [medianHigh](#medianHigh): High median
 -   [medianGrouped](#medianGrouped): Median of grouped data.
+-   [quartiles](#quartiles): Quartiles (4-quantile)
 -   [mode](#mode): Modes (most common data points) of discrete data
 
 Note: The methods do not require the data given to them to be sorted.
@@ -246,6 +248,36 @@ medianGrouped([1, 3, 3, 5, 7], 2); // -> 3.5
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+#### quartiles
+
+```js
+quartiles(arr)
+```
+
+Return the quartiles of a numeric data array `arr`.
+
+-   The first quartile (`Q1`) is defined as the middle number between the smallest number and the median of the data set.
+-   The second quartile (`Q2`) is the median of the data.
+-   The third quartile (`Q3`) is the middle value between the median and the highest value of the data set.
+
+```js
+quartiles([2, 2, 3, 4]); // -> [2, 2.5, 3.5]
+```
+The data set if first ordered, from smallest to highest.
+
+The median (`Q2`) is used to divide the ordered data set into two halves.
+-   If there are an odd number of data points in the original ordered data set the median is not included in either half.
+-   If there are an even number of data points in the original ordered data set, the sata set is split exactly in half.
+
+The lower quartile value (`Q1`) is the median of the lower half of the data. The upper quartile value (`Q3`) is the median of the upper half of the data.
+
+```js
+quartiles([6, 7, 15, 36, 39, 40, 41, 42, 43, 47, 49]); // -> [15, 40, 43]
+quartiles([7, 15, 36, 39, 40, 41]); // -> [15, 37.5, 40]
+```
+
+If the data array contains less than 4 elements and/or contains a non finite `Number`, the method returns `undefined`.
 
 #### mode
 
