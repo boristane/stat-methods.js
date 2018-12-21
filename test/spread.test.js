@@ -4,6 +4,7 @@ import {
   pStdev,
   variance,
   stdev,
+  range,
 } from '../src/spread';
 
 describe('Measures of spread', () => {
@@ -50,5 +51,16 @@ describe('Measures of spread', () => {
     expect(stdev(3)).toBeUndefined();
     expect(stdev([3])).toBeUndefined();
     testUndefinedWithNullable(stdev);
+  });
+
+  test('Range', () => {
+    expect(range([1.5, 2.5, 2.5, 2.75, 3.25, 4.75])).toBe(3.25);
+    expect(range([89, 73, 84, 91, 87, 77, 94])).toBe(21);
+    expect(range([3])).toBe(0);
+    expect(range(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(range([NaN, 2.5, 3, 5.75])).toBeUndefined();
+    expect(range([])).toBeUndefined();
+    expect(range(3)).toBeUndefined();
+    testUndefinedWithNullable(range);
   });
 });

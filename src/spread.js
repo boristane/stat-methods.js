@@ -1,4 +1,8 @@
 import { mean } from './central';
+import {
+  min,
+  max,
+} from './descriptive';
 
 /**
  * Return the sum of the square deviations from the mean of a numeric data array.
@@ -77,9 +81,23 @@ export function stdev(arr, xBar) {
   return v === undefined ? v : Math.sqrt(v);
 }
 
+/**
+ * Return the range of a numeric data array.
+ * The range of a set of data is the difference between the largest and smallest values.
+ * @param {Number[]} arr the data array
+ * @returns {Number} the range of the data array
+ */
+export function range(arr) {
+  const minimum = min(arr);
+  if (minimum === undefined) return undefined;
+  const maximum = max(arr);
+  return maximum - minimum;
+}
+
 export default {
   pVariance,
   pStdev,
   variance,
   stdev,
+  range,
 };

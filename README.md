@@ -32,6 +32,7 @@ npm i stat-methods
     -   [pStdev](#pStdev)
     -   [variance](#variance)
     -   [stdev](#stdev)
+    -   [range](#range)
 
 3.  [Descriptive statistics](#Descriptive-statistics)
     -   [min](#min)
@@ -120,7 +121,7 @@ The geometric mean is the nth root of the product of the n data points. For exam
 geometricMean([4, 1, 1/32]); // -> 0.5
 ```
 
-The `geometricMean()` indicates the central tendency or typical value of a set of numbers and is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
+The geometric mean indicates the central tendency or typical value of a set of numbers and is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
 
 If the data array contains an even total number of elements and an odd number of negative elements, the method returns `undefined`.
 
@@ -281,6 +282,7 @@ These methods compute a measure of the variability in a sample or population, ho
 -   [pStdev](#pStdev): Population standard deviation
 -   [variance](#variance): Sample variance
 -   [stdev](#stdev): Sample standard deviation
+-   [range](#range): Range
 
 #### pVariance
 
@@ -377,6 +379,22 @@ stdev([1, 2, 3, 4, 5], xBar); // -> 1.5811388300841898
 ```
 
 Please refer to the [variance](#variance) method for further details.
+
+#### range
+
+```js
+range(arr);
+```
+
+Return the range of a numeric data array `arr`.
+
+The range of a set of data is the difference between the largest and smallest values.
+
+```js
+range([89, 73, 84, 91, 87, 77, 94]); // -> 21
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
 
 ### Descriptive statistics
 
