@@ -6,8 +6,9 @@ import {
   median,
   medianLow,
   medianHigh,
-  mode,
   medianGrouped,
+  midRange,
+  mode,
   quartiles,
 } from '../src/central';
 
@@ -88,18 +89,6 @@ describe('Averages and measures of central location', () => {
     testUndefinedWithNullable(medianHigh);
   });
 
-  test('Mode', () => {
-    expect(mode([1, 2, 3, 3, 4, 4])).toEqual([3, 4]);
-    expect(mode([1, 1, 2])).toEqual([1]);
-    expect(mode(['a', 'c', 'b', 'd', 'c'])).toEqual(['c']);
-    expect(mode(['a', 2.5, 'b', 5.75])).toEqual(['a', 2.5, 'b', 5.75]);
-    expect(mode([NaN, 2.5, 2.5, 5.75])).toEqual([2.5]);
-    expect(mode([])).toBeUndefined();
-    expect(mode(3)).toBeUndefined();
-    expect(mode([3])).toEqual([3]);
-    testUndefinedWithNullable(mode);
-  });
-
   test('Median Grouped', () => {
     expect(medianGrouped([52, 52, 53, 54])).toBe(52.5);
     expect(medianGrouped([1, 2, 2, 3, 4, 4, 4, 4, 4, 5])).toBe(3.7);
@@ -112,6 +101,31 @@ describe('Averages and measures of central location', () => {
     expect(medianGrouped(3)).toBeUndefined();
     expect(medianGrouped([3])).toEqual(3);
     testUndefinedWithNullable(medianGrouped);
+  });
+
+  test('Mid-range', () => {
+    expect(midRange([1, 12, 3, 15, 6, 8, 9])).toBe(8);
+    expect(midRange([1, -2, 3, 4, 8, 6, 5, 9])).toBe(3.5);
+    expect(midRange([1, 2, 3, 4, 5, 6, -1])).toBe(2.5);
+    expect(midRange([1, 2, 3, 4, 5, 6, 'xyz'])).toBeUndefined(); 
+    expect(midRange([1, 2, 3, 4, 5, 6, 7, 7, 7.12, 7, 0.12])).toBe(3.62);
+    expect(midRange(['a', 'c', 'b', 'd'])).toBeUndefined();
+    expect(midRange([])).toBeUndefined();
+    expect(midRange(3)).toBeUndefined();
+    expect(midRange([30])).toBe(30);
+    testUndefinedWithNullable(midRange);
+  });
+
+  test('Mode', () => {
+    expect(mode([1, 2, 3, 3, 4, 4])).toEqual([3, 4]);
+    expect(mode([1, 1, 2])).toEqual([1]);
+    expect(mode(['a', 'c', 'b', 'd', 'c'])).toEqual(['c']);
+    expect(mode(['a', 2.5, 'b', 5.75])).toEqual(['a', 2.5, 'b', 5.75]);
+    expect(mode([NaN, 2.5, 2.5, 5.75])).toEqual([2.5]);
+    expect(mode([])).toBeUndefined();
+    expect(mode(3)).toBeUndefined();
+    expect(mode([3])).toEqual([3]);
+    testUndefinedWithNullable(mode);
   });
 
   test('Quartiles', () => {

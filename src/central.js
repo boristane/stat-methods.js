@@ -1,5 +1,12 @@
-import { product } from './descriptive';
-import { getAllIndexes, nthRoot } from './utils';
+import {
+  product,
+  min,
+  max,
+} from './descriptive';
+import {
+  getAllIndexes,
+  nthRoot,
+} from './utils';
 
 /**
  * Return the sample arithmetic mean of a numeric data array.
@@ -139,6 +146,53 @@ export function medianGrouped(arr, width = 1) {
 }
 
 /**
+ * Return the quartiles of a numeric data array.
+ * The first quartile (Q1) is defined as the middle number between the smallest number
+ * and the median of the data set.
+ * The second quartile (Q2) is the median of the data.
+ * The third quartile (Q3) is the middle value between the median and the highest
+ * value of the data set.
+ *
+ * The median is used to divide the ordered data set into two halves.
+ * If there are an odd number of data points in the original ordered data set
+ * the median is not included in either half.
+ * If there are an even number of data points in the original ordered data set,
+ * the sata set is split exactly in half.
+ * The lower quartile value is the median of the lower half of the data.
+ * The upper quartile value is the median of the upper half of the data.
+ * @param {Number[]} arr the data array
+ * @returns {Number[]} the quartiles of the data array
+ */
+export function quartiles(arr) {
+  if (!Array.isArray(arr) || arr.length < 4) return undefined;
+  const sorted = [...arr].sort((a, b) => a - b);
+  const med = median(sorted);
+  if (med === undefined) return undefined;
+
+  const l = sorted.length;
+  const lower = l % 2 === 0 ? sorted.slice(0, l / 2) : sorted.slice(0, Math.floor(l / 2));
+  const upper = l % 2 === 0 ? sorted.slice(l / 2, l) : sorted.slice(Math.ceil(l / 2), l);
+  return [median(lower), med, median(upper)];
+}
+
+/**
+ * Return the mid-range of a numeric data array.
+ * The mid-range is the midpoint of the range,
+ * found by adding the largest and smallest number, then dividing by two.
+ * @param {Array} arr the data array
+ * @returns {Number} midpoint of the data array
+ */
+export function midRange(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+
+  const minimum = min(arr);
+  if (minimum === undefined) return undefined;
+  const maximum = max(arr);
+
+  return (maximum + minimum) / 2;
+}
+
+/**
  * Return the mode(s) of a data array.
  * The mode is the most common data point from the data array.
  * If there are multiple data points with the same larger number of occurences in the data array,
@@ -169,36 +223,6 @@ export function mode(arr) {
   return modes;
 }
 
-/**
- * Return the quartiles of a numeric data array.
- * The first quartile (Q1) is defined as the middle number between the smallest number
- * and the median of the data set.
- * The second quartile (Q2) is the median of the data.
- * The third quartile (Q3) is the middle value between the median and the highest
- * value of the data set.
- *
- * The median is used to divide the ordered data set into two halves.
- * If there are an odd number of data points in the original ordered data set
- * the median is not included in either half.
- * If there are an even number of data points in the original ordered data set,
- * the sata set is split exactly in half.
- * The lower quartile value is the median of the lower half of the data.
- * The upper quartile value is the median of the upper half of the data.
- * @param {Number[]} arr the data array
- * @returns {Number[]} the quartiles of the data array
- */
-export function quartiles(arr) {
-  if (!Array.isArray(arr) || arr.length < 4) return undefined;
-  const sorted = [...arr].sort((a, b) => a - b);
-  const med = median(sorted);
-  if (med === undefined) return undefined;
-
-  const l = sorted.length;
-  const lower = l % 2 === 0 ? sorted.slice(0, l / 2) : sorted.slice(0, Math.floor(l / 2));
-  const upper = l % 2 === 0 ? sorted.slice(l / 2, l) : sorted.slice(Math.ceil(l / 2), l);
-  return [median(lower), med, median(upper)];
-}
-
 export default {
   mean,
   harmonicMean,
@@ -206,6 +230,7 @@ export default {
   median,
   medianLow,
   medianHigh,
-  mode,
   quartiles,
+  midRange,
+  mode,
 };

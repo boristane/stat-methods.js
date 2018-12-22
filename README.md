@@ -25,8 +25,9 @@ npm i stat-methods
     -   [medianLow](#medianLow)
     -   [medianHigh](#medianHigh)
     -   [medianGrouped](#medianGrouped)
-    -   [quartiles](#quartiles)
+    -   [midRange](#midRange)
     -   [mode](#mode)
+    -   [quartiles](#quartiles)
 
 2.  [Measures of spread](#Measures-of-spread)
     -   [pVariance](#pVariance)
@@ -54,9 +55,10 @@ These methods compute an average or typical value from a population or sample.
 -   [median](#median): Median (middle value)
 -   [medianLow](#medianLow): Low median
 -   [medianHigh](#medianHigh): High median
--   [medianGrouped](#medianGrouped): Median of grouped data.
--   [quartiles](#quartiles): Quartiles (4-quantile)
+-   [medianGrouped](#medianGrouped): Median of grouped data
+-   [midRange](#midRange): Midpoint of range
 -   [mode](#mode): Modes (most common data points) of discrete data
+-   [quartiles](#quartiles): Quartiles (4-quantile)
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -249,6 +251,49 @@ medianGrouped([1, 3, 3, 5, 7], 2); // -> 3.5
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
 
+#### Mid-range
+
+```js
+midRange(arr);
+```
+
+Return the mid-range of the data array `arr`.
+
+The mid-range is the midpoint of the range.
+
+```js
+midRange([1, 4, 6, -1]); // -> 2.5;
+```
+
+If the data array is empty, or contains a non-numeric value, the method returns `undefined`.
+
+#### mode
+
+```js
+mode(arr);
+```
+
+Return the mode(s) of a data array `arr`.
+
+The mode is the most common data point from the data array. The method `mode` returns the mode(s) in an array.
+
+```js
+mode([1, 1, 2]); // -> [1]
+```
+If there are multiple data points with the same larger number of occurences in the data array, there are multiple modes and they are all returned as an array.
+
+```js
+mode([1, 2, 3, 3, 4, 4]); // [3, 4]
+```
+
+The `mode` method also applies to non-numeric data arrays.
+
+```js
+mode(['a', 'c', 'b', 'd', 'c']); // -> ['c']
+```
+
+If the data array is empty, the method returns `undefined`.
+
 #### quartiles
 
 ```js
@@ -278,33 +323,6 @@ quartiles([7, 15, 36, 39, 40, 41]); // -> [15, 37.5, 40]
 ```
 
 If the data array contains less than 4 elements and/or contains a non finite `Number`, the method returns `undefined`.
-
-#### mode
-
-```js
-mode(arr);
-```
-
-Return the mode(s) of a data array `arr`.
-
-The mode is the most common data point from the data array. The method `mode` returns the mode(s) in an array.
-
-```js
-mode([1, 1, 2]); // -> [1]
-```
-If there are multiple data points with the same larger number of occurences in the data array, there are multiple modes and they are all returned as an array.
-
-```js
-mode([1, 2, 3, 3, 4, 4]); // [3, 4]
-```
-
-The `mode` method also applies to non-numeric data arrays.
-
-```js
-mode(['a', 'c', 'b', 'd', 'c']); // -> ['c']
-```
-
-If the data array is empty, the method returns `undefined`.
 
 ### Measures of spread
 
