@@ -183,10 +183,7 @@ export function quartiles(arr) {
  * @returns {Number} the mid-range of the data array
  */
 export function midRange(arr) {
-  const minimum = min(arr);
-  if (minimum === undefined) return undefined;
-  const maximum = max(arr);
-  return (maximum + minimum) / 2;
+  return mean([min(arr), max(arr)]);
 }
 
 /**
