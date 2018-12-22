@@ -177,18 +177,15 @@ export function quartiles(arr) {
 
 /**
  * Return the mid-range of a numeric data array.
- * The mid-range is the midpoint of the range,
- * found by adding the largest and smallest number, then dividing by two.
+ * The mid-range of a data set is the arithmetic mean of
+ * the maximum and minimum values in the data set.
  * @param {Array} arr the data array
- * @returns {Number} midpoint of the data array
+ * @returns {Number} the mid-range of the data array
  */
 export function midRange(arr) {
-  if (!Array.isArray(arr) || arr.length === 0) return undefined;
-
   const minimum = min(arr);
   if (minimum === undefined) return undefined;
   const maximum = max(arr);
-
   return (maximum + minimum) / 2;
 }
 
@@ -230,6 +227,7 @@ export default {
   median,
   medianLow,
   medianHigh,
+  medianGrouped,
   quartiles,
   midRange,
   mode,

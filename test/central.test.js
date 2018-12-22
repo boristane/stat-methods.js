@@ -107,7 +107,8 @@ describe('Averages and measures of central location', () => {
     expect(midRange([1, 12, 3, 15, 6, 8, 9])).toBe(8);
     expect(midRange([1, -2, 3, 4, 8, 6, 5, 9])).toBe(3.5);
     expect(midRange([1, 2, 3, 4, 5, 6, -1])).toBe(2.5);
-    expect(midRange([1, 2, 3, 4, 5, 6, 'xyz'])).toBeUndefined(); 
+    expect(midRange([1, 2, 3, 4, 5, 6, 'xyz'])).toBeUndefined();
+    expect(midRange([1, 2, NaN, 4, 5, 6])).toBeUndefined();
     expect(midRange([1, 2, 3, 4, 5, 6, 7, 7, 7.12, 7, 0.12])).toBe(3.62);
     expect(midRange(['a', 'c', 'b', 'd'])).toBeUndefined();
     expect(midRange([])).toBeUndefined();
