@@ -45,20 +45,25 @@ npm i stat-methods
     -   [covariance](#covariance)
     -   [correlation](#correlation)
 
+5.  [Regressions](#Regressions)
+    -   [linReg](#linReg)
+
 ### Averages and measures of central location
 
 These methods compute an average or typical value from a population or sample.
 
--   [mean](#mean): Arithmetic mean ('average')
--   [harmonicMean](#harmonicMean): Harmonic mean ('subcontrary mean')
--   [geometricMean](#geometricMean): Geometric mean
--   [median](#median): Median (middle value)
--   [medianLow](#medianLow): Low median
--   [medianHigh](#medianHigh): High median
--   [medianGrouped](#medianGrouped): Median of grouped data
--   [quartiles](#quartiles): Quartiles (4-quantile)
--   [midRange](#midRange): Average of minimum and maximum
--   [mode](#mode): Modes (most common data points) of discrete data
+| Method                          | Description                                          |
+| ------------------------------- | ---------------------------------------------------- |
+| [mean](#mean)                   | Arithmetic mean ('average')                          |
+| [harmonicMean](#harmonicMean)   | Harmonic mean ('subcontrary mean')                   |
+| [geometricMean](#geometricMean) | Geometric mean                                       |
+| [median](#median)               | Median (middle value)                                |
+| [medianLow](#medianLow)         | Low median                                           |
+| [medianHigh](#medianHigh)       | High median                                          |
+| [medianGrouped](#medianGrouped) | Median of grouped data                               |
+| [quartiles](#quartiles)         | Quartiles (4-quantile)                               |
+| [midRange](#midRange)           | Average of minimum and maximum                       |
+| [mode](#mode)                   | Modes (most common data points) of discrete data     |
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -96,8 +101,6 @@ Return the harmonic mean of a numeric data array `arr`.
 The harmonic mean is the reciprocal of the arithmetic mean of the reciprocals of the data. It is the number of data points divided by the sum of the reciprocals of the data points. For example, the harmonic mean of three values `a`, `b` and `c` will be equivalent to `3/(1/a + 1/b + 1/c)`.
 
 ```js
-// Great attention should be given to floating number errors using this method.
-harmonicMean([2.5, 3, 10]); // -> 3.5999999999999996
 harmonicMean([2.5, 3, 10]) * 10; // -> 36
 ```
 
@@ -328,11 +331,13 @@ If the data array is empty, the method returns `undefined`.
 
 These methods compute a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
 
--   [pVariance](#pVariance): Population variance
--   [pStdev](#pStdev): Population standard deviation
--   [variance](#variance): Sample variance
--   [stdev](#stdev): Sample standard deviation
--   [range](#range): Range
+| Method                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| [pVariance](#pVariance)    | Population variance                                  |
+| [pStdev](#pStdev)          | Population standard deviation                        |
+| [variance](#variance)      | Sample variance                                      |
+| [stdev](#stdev)            | Sample standard deviation                            |
+| [range](#range)            | Range                                                |
 
 #### pVariance
 
@@ -450,9 +455,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 These methods compute a summary statistic that quantitatively describes features of a data array.
 
--   [min](#min): Minimum
--   [max](#max): Maximum
--   [product](#product): Product of all the elements
+| Method                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| [min](#min)                | Minimum                                              |
+| [max](#max)                | Maximum                                              |
+| [product](#product)        | Product of all the elements                          |
 
 #### min
 
@@ -504,8 +511,10 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 These methods compute a measure of the similarity between samples or populations.
 
--   [covariance](#covariance): Joint variability
--   [correlation](#correlation): Linear relationship
+| Method                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| [covariance](#covariance)  | Joint variability                                    |
+| [correlation](#correlation)| Linear relationship                                  |
 
 #### covariance
 
@@ -552,6 +561,39 @@ correlation([1, 2, 3, 5], [1, 3, 8, 10]); // -> 0.9519450934357727
 The correlation is computed as the ratio between the covariance and the product of the standard deviations of the tow data arrays. The correlations is between -1 and 1.
 
 Please refer to the `covariance` method for further details.
+
+### Averages and measures of central location
+
+These methods compute regression models for estimating the relationships among variables.
+
+| Method                     | Description                                          |
+| -------------------------- | ---------------------------------------------------- |
+| [linReg](#linReg)          | Linear Regression                                    |
+
+
+#### linReg
+
+```js
+linReg(x, y);
+```
+
+Return the simple linear regression model between two variables, one independent `x` and one dependent `y`.
+The linear regression model is a linear function (straight line) which predicts with the highest possible accuracy the dependent variable as a function of the independent variable.
+
+```js
+linReg([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // ->
+/*
+{
+  slope: 0.6316472114137484,
+  y0: 2.1880674448767827,
+  deltaSlope: 0.1364335975819171,
+  deltaY0: 3.3680036696904967,
+} */
+```
+
+The method uses the least-squares approach, minimising the sum of squared residuals. The confidence intervals are computed as defined [here]() and with `t*_{n-2}` equal to `1`.
+
+The `linReg` method will return `undefined` in the cases defined in [covariance](#covariance).
 
 ## License
 

@@ -13,7 +13,7 @@ import {
  * @param {Number} mu the mean of the data array
  * @returns {Number} the sum of the square deviations
  */
-function squareDeviationSum(arr, mu) {
+export function squareDeviationSum(arr, mu) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
   const m = Number.isFinite(mu) ? mu : mean(arr);
   if (m === undefined) return undefined;
