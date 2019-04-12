@@ -217,6 +217,19 @@ export function mode(arr) {
   return modes;
 }
 
+/**
+ * Returns the root mean square of a numeric data array.
+ * The Root Mean Square (rms) is the square root of the arithmetic mean of
+ * the squares of a set of numbers
+ * @param {Array} arr the data array
+ * @returns {Number} The root mean square of the data array
+ */
+export function rms(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const xBar = mean(arr.map(elt => elt ** 2));
+  return xBar === undefined ? undefined : Math.sqrt(xBar);
+}
+
 export default {
   mean,
   harmonicMean,
@@ -228,4 +241,5 @@ export default {
   quartiles,
   midRange,
   mode,
+  rms,
 };

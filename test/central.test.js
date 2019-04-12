@@ -1,5 +1,5 @@
 import { testUndefinedWithNullable } from './utils';
-import { 
+import {
   mean,
   harmonicMean,
   geometricMean,
@@ -10,6 +10,7 @@ import {
   midRange,
   mode,
   quartiles,
+  rms,
 } from '../src/central';
 
 describe('Averages and measures of central location', () => {
@@ -39,7 +40,7 @@ describe('Averages and measures of central location', () => {
 
   test('Geometric mean', () => {
     expect(geometricMean([1, 2, 4])).toBe(2);
-    expect(geometricMean([4, 1, 1/32])).toBe(0.5);
+    expect(geometricMean([4, 1, 1 / 32])).toBe(0.5);
     expect(geometricMean([1.1, 1.4, 3.5, 9.5])).toBe(2.6750265241846307);
     expect(geometricMean([2.5, 0, 10])).toBe(0);
     expect(geometricMean([-1, 2, 4])).toBe(-2);
@@ -141,5 +142,16 @@ describe('Averages and measures of central location', () => {
     expect(quartiles([2, 3])).toBeUndefined();
     expect(quartiles([3, 4, 5])).toBeUndefined();
     testUndefinedWithNullable(quartiles);
+  });
+
+  test("Root Mean Square (rms)", () => {
+    expect(rms([1, 2, 1, 3])).toBe(1.9364916731037085);
+    expect(rms([4, 1, 1, 3])).toBe(2.598076211353316);
+    expect(rms(['a', 2.5, 'b', 5.75, 5])).toBeUndefined();
+    expect(rms([NaN, 2.5, 3, 5.75, 12])).toBeUndefined();
+    expect(rms([])).toBeUndefined();
+    expect(rms(3)).toBeUndefined();
+    expect(rms([3])).toBe(3);
+    testUndefinedWithNullable(rms);
   });
 });

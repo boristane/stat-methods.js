@@ -1,6 +1,6 @@
 # stat-methods
 
-[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=boristane/stat-methods.js&amp;utm_campaign=Badge_Grade)  [![](https://img.shields.io/bundlephobia/min/react.svg)](https://www.npmjs.com/package/stat-methods)  
+[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&utm_medium=referral&utm_content=boristane/stat-methods.js&utm_campaign=Badge_Grade)  [![](https://img.shields.io/bundlephobia/min/react.svg)](https://www.npmjs.com/package/stat-methods)  
 
 [![NPM](https://nodei.co/npm/stat-methods.png)](https://nodei.co/npm/stat-methods/) 
 
@@ -17,7 +17,9 @@ npm i stat-methods
 ## Documentation
 
 ### Table of contents
+
 1.  [Averages and measures of central location](#Averages-and-measures-of-central-location)
+
     -   [mean](#mean)
     -   [harmonicMean](#harmonicMean)
     -   [geometricMean](#geometricMean)
@@ -28,8 +30,10 @@ npm i stat-methods
     -   [quartiles](#quartiles)
     -   [midRange](#midRange)
     -   [mode](#mode)
+    -   [rms](#rms)
 
 2.  [Measures of spread](#Measures-of-spread)
+
     -   [pVariance](#pVariance)
     -   [pStdev](#pStdev)
     -   [variance](#variance)
@@ -37,11 +41,13 @@ npm i stat-methods
     -   [range](#range)
 
 3.  [Descriptive statistics](#Descriptive-statistics)
+
     -   [min](#min)
     -   [max](#max)
     -   [product](#product)
-  
+
 4.  [Measures of similarity](#Measures-of-similarity)
+
     -   [covariance](#covariance)
     -   [correlation](#correlation)
 
@@ -52,18 +58,19 @@ npm i stat-methods
 
 These methods compute an average or typical value from a population or sample.
 
-| Method                          | Description                                          |
-| ------------------------------- | ---------------------------------------------------- |
-| [mean](#mean)                   | Arithmetic mean ('average')                          |
-| [harmonicMean](#harmonicMean)   | Harmonic mean ('subcontrary mean')                   |
-| [geometricMean](#geometricMean) | Geometric mean                                       |
-| [median](#median)               | Median (middle value)                                |
-| [medianLow](#medianLow)         | Low median                                           |
-| [medianHigh](#medianHigh)       | High median                                          |
-| [medianGrouped](#medianGrouped) | Median of grouped data                               |
-| [quartiles](#quartiles)         | Quartiles (4-quantile)                               |
-| [midRange](#midRange)           | Average of minimum and maximum                       |
-| [mode](#mode)                   | Modes (most common data points) of discrete data     |
+| Method                          | Description                                      |
+| ------------------------------- | ------------------------------------------------ |
+| [mean](#mean)                   | Arithmetic mean ('average')                      |
+| [harmonicMean](#harmonicMean)   | Harmonic mean ('subcontrary mean')               |
+| [geometricMean](#geometricMean) | Geometric mean                                   |
+| [median](#median)               | Median (middle value)                            |
+| [medianLow](#medianLow)         | Low median                                       |
+| [medianHigh](#medianHigh)       | High median                                      |
+| [medianGrouped](#medianGrouped) | Median of grouped data                           |
+| [quartiles](#quartiles)         | Quartiles (4-quantile)                           |
+| [midRange](#midRange)           | Average of minimum and maximum                   |
+| [mode](#mode)                   | Modes (most common data points) of discrete data |
+| [rms](#rms)                     | Root Mean Square                                 |
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -269,9 +276,11 @@ Return the quartiles of a numeric data array `arr`.
 ```js
 quartiles([2, 2, 3, 4]); // -> [2, 2.5, 3.5]
 ```
+
 The data set if first ordered, from smallest to highest.
 
 The median (`Q2`) is used to divide the ordered data set into two halves.
+
 -   If there are an odd number of data points in the original ordered data set the median is not included in either half.
 -   If there are an even number of data points in the original ordered data set, the sata set is split exactly in half.
 
@@ -313,6 +322,7 @@ The mode is the most common data point from the data array. The method `mode` re
 ```js
 mode([1, 1, 2]); // -> [1]
 ```
+
 If there are multiple data points with the same larger number of occurences in the data array, there are multiple modes and they are all returned as an array.
 
 ```js
@@ -327,17 +337,33 @@ mode(['a', 'c', 'b', 'd', 'c']); // -> ['c']
 
 If the data array is empty, the method returns `undefined`.
 
+#### rms
+
+```js
+rms(arr);
+```
+
+Return the root mean square (rms) of the data array `arr`.
+
+The Root Mean Square (rms) is the square root of the arithmetic mean of the squares of a set of numbers.
+
+```js
+rms([4, 1, 1, 3]); // -> 2.598076211353316;
+```
+
+If the data array is empty or contains a non-numeric value, the method returns `undefined`.
+
 ### Measures of spread
 
 These methods compute a measure of the variability in a sample or population, how much the sample or population tends to deviate from the typical or average values.
 
-| Method                     | Description                                          |
-| -------------------------- | ---------------------------------------------------- |
-| [pVariance](#pVariance)    | Population variance                                  |
-| [pStdev](#pStdev)          | Population standard deviation                        |
-| [variance](#variance)      | Sample variance                                      |
-| [stdev](#stdev)            | Sample standard deviation                            |
-| [range](#range)            | Range                                                |
+| Method                  | Description                   |
+| ----------------------- | ----------------------------- |
+| [pVariance](#pVariance) | Population variance           |
+| [pStdev](#pStdev)       | Population standard deviation |
+| [variance](#variance)   | Sample variance               |
+| [stdev](#stdev)         | Sample standard deviation     |
+| [range](#range)         | Range                         |
 
 #### pVariance
 
@@ -455,11 +481,11 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 These methods compute a summary statistic that quantitatively describes features of a data array.
 
-| Method                     | Description                                          |
-| -------------------------- | ---------------------------------------------------- |
-| [min](#min)                | Minimum                                              |
-| [max](#max)                | Maximum                                              |
-| [product](#product)        | Product of all the elements                          |
+| Method              | Description                 |
+| ------------------- | --------------------------- |
+| [min](#min)         | Minimum                     |
+| [max](#max)         | Maximum                     |
+| [product](#product) | Product of all the elements |
 
 #### min
 
@@ -511,10 +537,10 @@ If the data array is empty or contains a non finite `Number`, the method returns
 
 These methods compute a measure of the similarity between samples or populations.
 
-| Method                     | Description                                          |
-| -------------------------- | ---------------------------------------------------- |
-| [covariance](#covariance)  | Joint variability                                    |
-| [correlation](#correlation)| Linear relationship                                  |
+| Method                      | Description         |
+| --------------------------- | ------------------- |
+| [covariance](#covariance)   | Joint variability   |
+| [correlation](#correlation) | Linear relationship |
 
 #### covariance
 
@@ -529,6 +555,7 @@ The covariance is a measure of the joint variability of two data arrays.
 ```js
 covariance([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // -> 146.1
 ```
+
 The `covariance` method will return `undefined` in the following cases:
 
 -   At least one of the arguments is not an array.
@@ -566,10 +593,9 @@ Please refer to the `covariance` method for further details.
 
 These methods compute regression models for estimating the relationships among variables.
 
-| Method                     | Description                                          |
-| -------------------------- | ---------------------------------------------------- |
-| [linReg](#linReg)          | Linear Regression                                    |
-
+| Method            | Description       |
+| ----------------- | ----------------- |
+| [linReg](#linReg) | Linear Regression |
 
 #### linReg
 
@@ -591,7 +617,7 @@ linReg([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // ->
 } */
 ```
 
-The method uses the least-squares approach, minimising the sum of squared residuals. The confidence intervals are computed as defined [here]() and with `t*_{n-2}` equal to `1`.
+The method uses the least-squares approach, minimising the sum of squared residuals. The confidence intervals are computed as defined [here](<>) and with `t*_{n-2}` equal to `1`.
 
 The `linReg` method will return `undefined` in the cases defined in [covariance](#covariance).
 
