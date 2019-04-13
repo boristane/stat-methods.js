@@ -2,6 +2,7 @@ import { testUndefinedWithNullable } from './utils';
 import {
   getAllIndexes,
   nthRoot,
+  kahanSum,
 } from '../src/utils';
 
 describe('Descriptive Statistics', () => {
@@ -31,5 +32,15 @@ describe('Descriptive Statistics', () => {
     expect(nthRoot(2, undefined)).toBeUndefined();
     testUndefinedWithNullable(nthRoot);
   });
+
+  test("Kahan Sum", () => {
+    expect(kahanSum([1, 2, 3, 4])).toBe(10);
+    expect(kahanSum([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7])).toBe(15.3);
+    expect(kahanSum([NaN, 2, 3, 4])).toBeUndefined();
+    expect(kahanSum(['a', 2, 3, 4])).toBeUndefined();
+    expect(kahanSum(["hello", 3, 4, 5])).toBeUndefined();
+    expect(kahanSum([3])).toBe(3);
+    expect(kahanSum([5, 8, 1.2, null])).toBeUndefined();
+  })
 
 });

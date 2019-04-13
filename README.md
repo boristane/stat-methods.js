@@ -45,6 +45,7 @@ npm i stat-methods
     -   [min](#min)
     -   [max](#max)
     -   [product](#product)
+    -   [sum](#sum)
 
 4.  [Measures of similarity](#Measures-of-similarity)
 
@@ -486,6 +487,7 @@ These methods compute a summary statistic that quantitatively describes features
 | [min](#min)         | Minimum                     |
 | [max](#max)         | Maximum                     |
 | [product](#product) | Product of all the elements |
+| [sum](#sum)         | Sum of all the elements     |
 
 #### min
 
@@ -529,6 +531,20 @@ Return the product of all elements of a numeric data array `arr`.
 
 ```js
 product([1, 2, 3, 4]); // -> 24
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+#### sum
+
+```js
+sum(arr);
+```
+
+Return the sum of all elements of a numeric data array `arr`. The method implement the [Kahan summation algorithm](https://en.wikipedia.org/wiki/Kahan_summation_algorithm) in order to minimise numerical error.
+
+```js
+sum([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7]); // -> 15.3
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.

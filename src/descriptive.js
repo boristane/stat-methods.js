@@ -1,3 +1,5 @@
+import { kahanSum } from './utils';
+
 /**
  * Return the minimum of a numeric data array.
  * @param {Number[]} arr the data array
@@ -43,8 +45,14 @@ export function product(arr) {
   return result;
 }
 
+export function sum(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  return kahanSum(arr);
+}
+
 export default {
   min,
   max,
   product,
+  sum,
 };

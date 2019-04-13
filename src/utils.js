@@ -25,7 +25,26 @@ export function nthRoot(val, n) {
   return (val < 0 ? -1 : 1) * (Math.abs(val) ** (1 / n));
 }
 
+/**
+ * Return the sum of all elements of the data array whilst minimising the numerical error
+ * @param {Number} arr the data array
+ * @returns {Number} the sum of the the elements of the array
+ */
+export function kahanSum(arr) {
+  let result = 0;
+  let compensation = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!Number.isFinite(arr[i])) return undefined;
+    const y = arr[i] - compensation;
+    const total = result + y;
+    compensation = (total - result) - y;
+    result = total;
+  }
+  return result;
+}
+
 export default {
   getAllIndexes,
   nthRoot,
+  kahanSum,
 };
