@@ -6,6 +6,7 @@ import {
 import {
   getAllIndexes,
   nthRoot,
+  kahanSum,
 } from './utils';
 
 /**
@@ -16,11 +17,8 @@ import {
  */
 export function mean(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
-  let sum = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    if (!Number.isFinite(arr[i])) return undefined;
-    sum += arr[i];
-  }
+  const sum = kahanSum(arr);
+  if (sum === undefined) return undefined;
   return sum / arr.length;
 }
 
@@ -35,11 +33,8 @@ export function mean(arr) {
  */
 export function harmonicMean(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
-  let sum = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    if (!Number.isFinite(arr[i]) || arr[i] === 0) return undefined;
-    sum += 1 / arr[i];
-  }
+  const sum = kahanSum(arr.map(elt => 1 / elt));
+  if (sum === undefined || sum === 0) return undefined;
   return arr.length / sum;
 }
 

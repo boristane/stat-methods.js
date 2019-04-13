@@ -1,5 +1,5 @@
 import { testUndefinedWithNullable } from './utils';
-import { 
+import {
   linReg,
 } from '../src/regression';
 
@@ -16,10 +16,10 @@ describe('Regressions', () => {
     const y = [52.21, 53.12, 54.48, 55.84, 57.20, 58.57, 59.93, 61.29, 63.11, 64.47, 66.28, 68.10, 69.92, 72.19, 74.46]
     expect(linReg(x, y))
       .toEqual({
-        y0: -39.06195591884391,
-        slope: 61.27218654211062,
-        deltaY0: 2.9380010671834422,
-        deltaSlope: 1.7759227522153647,
+        y0: -39.06195591884396,
+        slope: 61.27218654211063,
+        deltaY0: 2.938001067183445,
+        deltaSlope: 1.775922752215366,
       });
     expect(linReg([3, 2.5, 5.1, 5.75], ['a', 2.5, 'b', 5.75])).toBeUndefined();
     expect(linReg([NaN, 2.5, 3, 5.75], [3, 2.5, 5.1, 5.75])).toBeUndefined();

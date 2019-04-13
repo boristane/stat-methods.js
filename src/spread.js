@@ -3,6 +3,7 @@ import {
   min,
   max,
 } from './descriptive';
+import { kahanSum } from './utils';
 
 /**
  * Return the sum of the square deviations from the mean of a numeric data array.
@@ -17,10 +18,7 @@ export function squareDeviationSum(arr, mu) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
   const m = Number.isFinite(mu) ? mu : mean(arr);
   if (m === undefined) return undefined;
-  let sum = 0;
-  for (let i = 0; i < arr.length; i += 1) {
-    sum += (arr[i] - m) ** 2;
-  }
+  const sum = kahanSum(arr.map(elt => (elt - m) ** 2));
   return sum;
 }
 

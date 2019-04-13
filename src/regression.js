@@ -1,17 +1,16 @@
-import { 
-  mean,
-} from './central';
+import { mean } from './central';
 import {
   variance,
   squareDeviationSum,
 } from './spread';
-import {
-  covariance,
-} from './similarity';
+import { covariance } from './similarity';
+import { kahanSum } from './utils';
 
 /**
- * Return the simple linear regression model between two variables, one independent and one dependent.
- * The linear regression model is a linear function (straight line) which predicts with the highest possible accuracy
+ * Return the simple linear regression model between two variables,
+ * one independent and one dependent.
+ * The linear regression model is a linear function (straight line)
+ * which predicts with the highest possible accuracy
  * the dependent variable as a function of the independent variable.
  * The method uses the least-squares approach, minimising the sum of squared residuals.
  * @param {Number[]} x the independent variable data array
@@ -28,13 +27,11 @@ export function linReg(x, y) {
   const y0 = yBar - slope * xBar;
   let sumSquareError = 0;
   const n = x.length;
-  for (let i = 0; i < n; i+= 1) {
+  for (let i = 0; i < n; i += 1) {
     sumSquareError += (y[i] - (slope * x[i] + y0)) ** 2;
   }
   const deltaSlope = Math.sqrt(sumSquareError / ((n - 2) * squareDeviationSum(x, xBar)));
-  const sumSquareX = x.reduce((acc, val) => {
-    return acc + val ** 2
-  }, 0);
+  const sumSquareX = kahanSum(x.map(elt => (elt ** 2)));
   const deltaY0 = deltaSlope * Math.sqrt(sumSquareX / n);
   return {
     slope,
@@ -46,4 +43,4 @@ export function linReg(x, y) {
 
 export default {
   linReg,
-}
+};

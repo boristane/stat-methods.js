@@ -633,7 +633,7 @@ linReg([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // ->
 } */
 ```
 
-The method uses the least-squares approach, minimising the sum of squared residuals. The confidence intervals are computed as defined [here](<>) and with `t*_{n-2}` equal to `1`.
+The method uses the least-squares approach, minimising the sum of squared residuals. The confidence intervals are computed as defined [here](https://en.wikipedia.org/wiki/Simple_linear_regression#Confidence_intervals) and with `t*_{n-2}` equal to `1`.
 
 The `linReg` method will return `undefined` in the cases defined in [covariance](#covariance).
 
