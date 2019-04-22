@@ -1,13 +1,5 @@
-import {
-  product,
-  min,
-  max,
-} from './descriptive';
-import {
-  getAllIndexes,
-  nthRoot,
-  kahanSum,
-} from './utils';
+import { product, min, max } from './descriptive';
+import { getAllIndexes, nthRoot, kahanSum } from './utils';
 
 /**
  * Return the sample arithmetic mean of a numeric data array.
@@ -33,7 +25,7 @@ export function mean(arr) {
  */
 export function harmonicMean(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
-  const sum = kahanSum(arr.map(elt => 1 / elt));
+  const sum = kahanSum(arr.map((elt) => 1 / elt));
   if (sum === undefined || sum === 0) return undefined;
   return arr.length / sum;
 }
@@ -69,7 +61,9 @@ export function median(arr) {
   }
   const sorted = [...arr].sort((a, b) => a - b);
   const l = sorted.length;
-  return l % 2 ? sorted[Math.floor(l / 2)] : (sorted[l / 2] + sorted[l / 2 - 1]) / 2;
+  return l % 2
+    ? sorted[Math.floor(l / 2)]
+    : (sorted[l / 2] + sorted[l / 2 - 1]) / 2;
 }
 
 /**
@@ -124,8 +118,12 @@ export function medianGrouped(arr, width = 1) {
       });
       current += width;
     }
-    groups.find(group => (sorted[i] >= group.interval[0] && sorted[i] < group.interval[1]))
-      .frequency += 1;
+    groups.find((group) => {
+      if (sorted[i] >= group.interval[0] && sorted[i] < group.interval[1]) {
+        return true;
+      }
+      return false;
+    }).frequency += 1;
   }
   const l = sorted.length;
   let medianGroup;
@@ -137,7 +135,9 @@ export function medianGrouped(arr, width = 1) {
     groupIterator += 1;
   }
   count -= medianGroup.frequency;
-  return medianGroup.interval[0] + ((l / 2) - count) / medianGroup.frequency * width;
+  return (
+    medianGroup.interval[0] + ((l / 2 - count) / medianGroup.frequency) * width
+  );
 }
 
 /**
@@ -165,8 +165,15 @@ export function quartiles(arr) {
   if (med === undefined) return undefined;
 
   const l = sorted.length;
-  const lower = l % 2 === 0 ? sorted.slice(0, l / 2) : sorted.slice(0, Math.floor(l / 2));
-  const upper = l % 2 === 0 ? sorted.slice(l / 2, l) : sorted.slice(Math.ceil(l / 2), l);
+  let lower;
+  let upper;
+  if (l % 2 === 0) {
+    lower = sorted.slice(0, l / 2);
+    upper = sorted.slice(l / 2, l);
+  } else {
+    lower = sorted.slice(0, Math.floor(l / 2));
+    upper = sorted.slice(Math.ceil(l / 2), l);
+  }
   return [median(lower), med, median(upper)];
 }
 
@@ -202,8 +209,10 @@ export function mode(arr) {
       numOccurences[index] += 1;
     }
   }
-
-  const occurenceMax = numOccurences.reduce((acc, val) => (val > acc ? val : acc));
+  const occurenceMax = numOccurences.reduce((acc, val) => {
+    if (val > acc) return val;
+    return acc;
+  });
   const modesIndexes = getAllIndexes(numOccurences, occurenceMax);
   const modes = [];
   for (let i = 0; i < modesIndexes.length; i += 1) {
@@ -221,8 +230,26 @@ export function mode(arr) {
  */
 export function rms(arr) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
-  const xBar = mean(arr.map(elt => elt ** 2));
+  const xBar = mean(arr.map((elt) => elt ** 2));
   return xBar === undefined ? undefined : Math.sqrt(xBar);
+}
+
+/**
+ * Returns the k^{th} percentile of the data array.
+ * A percentile (or a centile) is a measure used in statistics indicating
+ * the value below which a given percentage of observations in a group
+ * of observations falls.
+ * @param {Array} arr the data array
+ * @param {Number} k the percentile to compute, between 0 and 1.
+ */
+export function percentile(arr, k) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (!Number.isFinite(arr[i])) return undefined;
+  }
+  const sorted = [...arr].sort((a, b) => a - b);
+  const l = Math.ceil(sorted.length * k) - 1;
+  return sorted[l];
 }
 
 export default {
@@ -237,4 +264,5 @@ export default {
   midRange,
   mode,
   rms,
+  percentile,
 };

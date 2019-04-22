@@ -1,8 +1,8 @@
 # stat-methods
 
-[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js)  [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)  [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&utm_medium=referral&utm_content=boristane/stat-methods.js&utm_campaign=Badge_Grade)  [![](https://img.shields.io/bundlephobia/min/react.svg)](https://www.npmjs.com/package/stat-methods)  
+[![Build Status](https://travis-ci.org/boristane/stat-methods.js.svg?branch=master)](https://travis-ci.org/boristane/stat-methods.js) [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/831be96eff514a60a3231a7885de3af0)](https://www.codacy.com/app/boris.tane/stat-methods.js?utm_source=github.com&utm_medium=referral&utm_content=boristane/stat-methods.js&utm_campaign=Badge_Grade) [![](https://img.shields.io/bundlephobia/min/react.svg)](https://www.npmjs.com/package/stat-methods)
 
-[![NPM](https://nodei.co/npm/stat-methods.png)](https://nodei.co/npm/stat-methods/) 
+[![NPM](https://nodei.co/npm/stat-methods.png)](https://nodei.co/npm/stat-methods/)
 
 ## Getting Started
 
@@ -20,40 +20,41 @@ npm i stat-methods
 
 1.  [Averages and measures of central location](#Averages-and-measures-of-central-location)
 
-    -   [mean](#mean)
-    -   [harmonicMean](#harmonicMean)
-    -   [geometricMean](#geometricMean)
-    -   [median](#median)
-    -   [medianLow](#medianLow)
-    -   [medianHigh](#medianHigh)
-    -   [medianGrouped](#medianGrouped)
-    -   [quartiles](#quartiles)
-    -   [midRange](#midRange)
-    -   [mode](#mode)
-    -   [rms](#rms)
+    - [mean](#mean)
+    - [harmonicMean](#harmonicMean)
+    - [geometricMean](#geometricMean)
+    - [median](#median)
+    - [medianLow](#medianLow)
+    - [medianHigh](#medianHigh)
+    - [medianGrouped](#medianGrouped)
+    - [quartiles](#quartiles)
+    - [midRange](#midRange)
+    - [mode](#mode)
+    - [rms](#rms)
+    - [percentile](#percentile)
 
 2.  [Measures of spread](#Measures-of-spread)
 
-    -   [pVariance](#pVariance)
-    -   [pStdev](#pStdev)
-    -   [variance](#variance)
-    -   [stdev](#stdev)
-    -   [range](#range)
+    - [pVariance](#pVariance)
+    - [pStdev](#pStdev)
+    - [variance](#variance)
+    - [stdev](#stdev)
+    - [range](#range)
 
 3.  [Descriptive statistics](#Descriptive-statistics)
 
-    -   [min](#min)
-    -   [max](#max)
-    -   [product](#product)
-    -   [sum](#sum)
+    - [min](#min)
+    - [max](#max)
+    - [product](#product)
+    - [sum](#sum)
 
 4.  [Measures of similarity](#Measures-of-similarity)
 
-    -   [covariance](#covariance)
-    -   [correlation](#correlation)
+    - [covariance](#covariance)
+    - [correlation](#correlation)
 
 5.  [Regressions](#Regressions)
-    -   [linReg](#linReg)
+    - [linReg](#linReg)
 
 ### Averages and measures of central location
 
@@ -72,6 +73,7 @@ These methods compute an average or typical value from a population or sample.
 | [midRange](#midRange)           | Average of minimum and maximum                   |
 | [mode](#mode)                   | Modes (most common data points) of discrete data |
 | [rms](#rms)                     | Root Mean Square                                 |
+| [percentile](#percentile)       | Percentile                                       |
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -133,7 +135,7 @@ Return the geometric mean of a numeric data array `arr`.
 The geometric mean is the nth root of the product of the `n` data points (`n` is the number of data points) For example, the geometric mean of three values `a`, `b` and `c` will be equivalent to `(a*b*c) ^ (1/3)`.
 
 ```js
-geometricMean([4, 1, 1/32]); // -> 0.5
+geometricMean([4, 1, 1 / 32]); // -> 0.5
 ```
 
 The geometric mean indicates the central tendency or typical value of a set of numbers and is often used when comparing different items — finding a single "figure of merit" for these items — when each item has multiple properties that have different numeric ranges.
@@ -156,13 +158,13 @@ Return the median (middle value) of a numeric data array `arr`.
 
 The median is the value separating the higher half from the lower half of a data sample. The `median` method uses the “mean of middle two” method:
 
--   If there is an odd number of numbers, the median is the middle one. 
+- If there is an odd number of numbers, the median is the middle one.
 
 ```js
 median([1, 2, 3, 4, 5]); // -> 3
 ```
 
--   If there is an even number of observations, then there is no single middle value; the median is then defined as the mean of the two middle values.
+- If there is an even number of observations, then there is no single middle value; the median is then defined as the mean of the two middle values.
 
 ```js
 median([1, 2, 3, 4, 5, 6]); // -> 3.5
@@ -180,13 +182,13 @@ Return the low median of a data array `arr`. An optional `compareFunction` param
 
 The low median is always a member of the data set. The `medianLow` method accepts both numeric and non numeric data arrays.
 
--   When the number of observations is odd, the middle value is returned.
+- When the number of observations is odd, the middle value is returned.
 
 ```js
 medianLow([1, 2, 3, 4, 5]); // -> 3
 ```
 
--   When the number of observations is even, the smaller of the two middle values is returned.
+- When the number of observations is even, the smaller of the two middle values is returned.
 
 ```js
 medianLow([1, 2, 3, 4, 5, 6]); // -> 3
@@ -215,13 +217,13 @@ Return the high median of a data array `arr`. An optional `compareFunction` para
 
 The high median is always a member of the data set. The `medianHigh` method accepts both numeric and non numeric data arrays.
 
--   When the number of observations is odd, the middle value is returned.
+- When the number of observations is odd, the middle value is returned.
 
 ```js
 medianHigh([1, 2, 3, 4, 5]); // -> 3
 ```
 
--   When the number of observations is even, the larger of the two middle values is returned.
+- When the number of observations is even, the larger of the two middle values is returned.
 
 ```js
 medianHigh([1, 2, 3, 4, 5, 6]); // -> 4
@@ -265,14 +267,14 @@ If the data array is empty or contains a non finite `Number`, the method returns
 #### quartiles
 
 ```js
-quartiles(arr)
+quartiles(arr);
 ```
 
 Return the quartiles of a numeric data array `arr`.
 
--   The first quartile (`Q1`) is defined as the middle number between the smallest number and the median of the data set.
--   The second quartile (`Q2`) is the median of the data.
--   The third quartile (`Q3`) is the middle value between the median and the highest value of the data set.
+- The first quartile (`Q1`) is defined as the middle number between the smallest number and the median of the data set.
+- The second quartile (`Q2`) is the median of the data.
+- The third quartile (`Q3`) is the middle value between the median and the highest value of the data set.
 
 ```js
 quartiles([2, 2, 3, 4]); // -> [2, 2.5, 3.5]
@@ -282,8 +284,8 @@ The data set if first ordered, from smallest to highest.
 
 The median (`Q2`) is used to divide the ordered data set into two halves.
 
--   If there are an odd number of data points in the original ordered data set the median is not included in either half.
--   If there are an even number of data points in the original ordered data set, the sata set is split exactly in half.
+- If there are an odd number of data points in the original ordered data set the median is not included in either half.
+- If there are an even number of data points in the original ordered data set, the sata set is split exactly in half.
 
 The lower quartile value (`Q1`) is the median of the lower half of the data. The upper quartile value (`Q3`) is the median of the upper half of the data.
 
@@ -353,6 +355,22 @@ rms([4, 1, 1, 3]); // -> 2.598076211353316;
 ```
 
 If the data array is empty or contains a non-numeric value, the method returns `undefined`.
+
+#### percentile
+
+```js
+percentile(arr, k);
+```
+
+Returns the `k^{th}` percentile of the data array.
+
+A percentile (or a centile) is a measure used in statistics indicating the value below which a given percentage of observations in a group3 of observations falls.
+
+```js
+percentile([13, 20, 8, 8, 7, 10, 3, 15, 16, 6], 0.25); // -> 7
+```
+
+If the data array is empty or contains a non-numeric value, the method returns `undefined`. If the value of `k` is non-numeric and not in the interval `[0, 1]`, the method returns `undefined`.
 
 ### Measures of spread
 
@@ -544,7 +562,25 @@ sum(arr);
 Return the sum of all elements of a numeric data array `arr`. The method implement the [Kahan summation algorithm](https://en.wikipedia.org/wiki/Kahan_summation_algorithm) in order to minimise numerical error.
 
 ```js
-sum([0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7]); // -> 15.3
+sum([
+  0.1,
+  0.2,
+  0.3,
+  0.4,
+  0.5,
+  0.6,
+  0.7,
+  0.8,
+  0.9,
+  1.0,
+  1.1,
+  1.2,
+  1.3,
+  1.4,
+  1.5,
+  1.6,
+  1.7,
+]); // -> 15.3
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
@@ -574,10 +610,10 @@ covariance([5, 12, 18, 23, 45], [2, 8, 18, 20, 28]); // -> 146.1
 
 The `covariance` method will return `undefined` in the following cases:
 
--   At least one of the arguments is not an array.
--   At least one of the data arrays contains at least one non finite `Number`.
--   At least one of the data arrays contains less than two elements.
--   The two data arrays do not have the same number of elements.
+- At least one of the arguments is not an array.
+- At least one of the data arrays contains at least one non finite `Number`.
+- At least one of the data arrays contains less than two elements.
+- The two data arrays do not have the same number of elements.
 
 ```js
 covariance(3, [2, 2]); // -> undefined
