@@ -32,6 +32,7 @@ npm i stat-methods
     - [mode](#mode)
     - [rms](#rms)
     - [percentile](#percentile)
+    - [kurtosis](#kurtosis)
 
 2.  [Measures of spread](#Measures-of-spread)
 
@@ -75,6 +76,7 @@ These methods compute an average or typical value from a population or sample.
 | [mode](#mode)                   | Modes (most common data points) of discrete data |
 | [rms](#rms)                     | Root Mean Square                                 |
 | [percentile](#percentile)       | Percentile                                       |
+| [kurtosis](#kurtosis)           | Kurtosis                                         |
 
 Note: The methods do not require the data given to them to be sorted.
 
@@ -372,6 +374,22 @@ percentile([13, 20, 8, 8, 7, 10, 3, 15, 16, 6], 0.25); // -> 7
 ```
 
 If the data array is empty or contains a non-numeric value, the method returns `undefined`. If the value of `k` is non-numeric and not in the interval `[0, 1]`, the method returns `undefined`.
+
+#### kurtosis
+
+```js
+kurtosis(arr);
+```
+
+Returns the sample kurtosis of the data array.
+
+The sample kurtosis is a measure of the "tailedness" of a data array.
+```js
+const arr = [0, 3, 4, 1, 2, 3, 0, 2, 1, 3, 2, 0, 2, 2, 3, 2, 5, 2, 3, 999];
+kurtosis(arr).toFixed(2); // -> '15.05';
+```
+
+If the data array is empty or contains a non-numeric value, the method returns `undefined`.
 
 ### Measures of spread
 

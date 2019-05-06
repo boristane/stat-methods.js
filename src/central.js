@@ -1,5 +1,5 @@
 import { product, min, max } from './descriptive';
-import { getAllIndexes, nthRoot, kahanSum } from './utils';
+import { getAllIndexes, nthRoot, kahanSum, nthMomentAboutMean } from './utils';
 
 /**
  * Return the sample arithmetic mean of a numeric data array.
@@ -250,6 +250,20 @@ export function percentile(arr, k) {
   const sorted = [...arr].sort((a, b) => a - b);
   const l = Math.ceil(sorted.length * k) - 1;
   return sorted[l];
+}
+
+/**
+ * Returns the sample kurtosis of a numerical data array.
+ * The sample kurtosis is a measure of the "tailedness" of the data.
+ * @param {Number[]} arr the data array
+ * @returns {Number} the sample kurtosis of the data array
+ */
+export function kurtosis(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) return undefined;
+  const m4 = nthMomentAboutMean(arr, 4);
+  const m2 = nthMomentAboutMean(arr, 2);
+  if (m2 === undefined || m4 === undefined) return undefined;
+  return m4 / m2 ** 2 - 3;
 }
 
 export default {

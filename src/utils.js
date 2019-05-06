@@ -22,7 +22,7 @@ export function getAllIndexes(arr, elt) {
 export function nthRoot(val, n) {
   if (!Number.isFinite(val) || !Number.isFinite(n)) return undefined;
   if (val < 0 && n % 2 === 0) return undefined;
-  return (val < 0 ? -1 : 1) * (Math.abs(val) ** (1 / n));
+  return (val < 0 ? -1 : 1) * Math.abs(val) ** (1 / n);
 }
 
 /**
@@ -37,14 +37,30 @@ export function kahanSum(arr) {
     if (!Number.isFinite(arr[i])) return undefined;
     const y = arr[i] - compensation;
     const total = result + y;
-    compensation = (total - result) - y;
+    compensation = total - result - y;
     result = total;
   }
   return result;
+}
+
+/**
+ * Returns the nth moment about the mean of the data array.
+ * @param {Number[]} arr the data array
+ * @param {Number} n the moment order
+ * @returns {Number} the nth moment about the mean
+ */
+export function nthMomentAboutMean(arr, n) {
+  const s = kahanSum(arr);
+  if (s === undefined) return undefined;
+  const xBar = s / arr.length;
+  const a = arr.map((elt) => (elt - xBar) ** n);
+  const sum = a.reduce((acc, curr) => acc + curr);
+  return sum / arr.length;
 }
 
 export default {
   getAllIndexes,
   nthRoot,
   kahanSum,
+  nthMomentAboutMean,
 };
