@@ -1,15 +1,11 @@
 import { testUndefinedWithNullable } from './utils';
-import {
-  pVariance,
-  pStdev,
-  variance,
-  stdev,
-  range,
-} from '../src/spread';
+import { pVariance, pStdev, variance, stdev, range, mad } from '../src/spread';
 
 describe('Measures of spread', () => {
   test('Population Variance', () => {
-    expect(pVariance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25])).toBe(1.25);
+    expect(pVariance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25])).toBe(
+      1.25,
+    );
     expect(pVariance([1, 2, 3, 4, 5], 3)).toBe(2);
     expect(pVariance(['a', 2.5, 'b', 5.75])).toBeUndefined();
     expect(pVariance([NaN, 2.5, 3, 5.75])).toBeUndefined();
@@ -31,8 +27,12 @@ describe('Measures of spread', () => {
   });
 
   test('Sample Variance', () => {
-    expect(variance([2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5])).toBe(1.3720238095238095);
-    expect(variance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25])).toBe(1.4285714285714286);
+    expect(variance([2.75, 1.75, 1.25, 0.25, 0.5, 1.25, 3.5])).toBe(
+      1.3720238095238095,
+    );
+    expect(variance([0.0, 0.25, 0.25, 1.25, 1.5, 1.75, 2.75, 3.25])).toBe(
+      1.4285714285714286,
+    );
     expect(variance([1, 2, 3, 4, 5], 3)).toBe(2.5);
     expect(variance(['a', 2.5, 'b', 5.75])).toBeUndefined();
     expect(variance([NaN, 2.5, 3, 5.75])).toBeUndefined();
@@ -62,5 +62,16 @@ describe('Measures of spread', () => {
     expect(range([])).toBeUndefined();
     expect(range(3)).toBeUndefined();
     testUndefinedWithNullable(range);
+  });
+
+  test('Median absolute deviation', () => {
+    expect(mad([1, 1, 2, 2, 4, 6, 9])).toBe(1);
+    expect(mad([3, 8, 8, 8, 8, 9, 9, 9, 9])).toBe(1);
+    expect(mad([3])).toBe(0);
+    expect(mad(['a', 2.5, 'b', 5.75])).toBeUndefined();
+    expect(mad([NaN, 2.5, 3, 5.75])).toBeUndefined();
+    expect(mad([])).toBeUndefined();
+    expect(mad(3)).toBeUndefined();
+    testUndefinedWithNullable(mad);
   });
 });

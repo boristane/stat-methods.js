@@ -40,6 +40,7 @@ npm i stat-methods
     - [variance](#variance)
     - [stdev](#stdev)
     - [range](#range)
+    - [mad](#mad)
 
 3.  [Descriptive statistics](#Descriptive-statistics)
 
@@ -383,6 +384,7 @@ These methods compute a measure of the variability in a sample or population, ho
 | [variance](#variance)   | Sample variance               |
 | [stdev](#stdev)         | Sample standard deviation     |
 | [range](#range)         | Range                         |
+| [mad](#mad)             | Median Absolute Deviation     |
 
 #### pVariance
 
@@ -492,6 +494,22 @@ The range of a set of data is the difference between the largest and smallest va
 
 ```js
 range([89, 73, 84, 91, 87, 77, 94]); // -> 21
+```
+
+If the data array is empty or contains a non finite `Number`, the method returns `undefined`.
+
+#### mad
+
+```js
+mad(arr);
+```
+
+Return the median absolute deviation (mad) of a numeric data array `arr`.
+
+The media absolute deviation is the median of the absolute deviations from the data median.
+
+```js
+mad([3, 8, 8, 8, 8, 9, 9, 9, 9]); // -> 1
 ```
 
 If the data array is empty or contains a non finite `Number`, the method returns `undefined`.

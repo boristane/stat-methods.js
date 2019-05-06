@@ -1,8 +1,5 @@
-import { mean } from './central';
-import {
-  min,
-  max,
-} from './descriptive';
+import { mean, median } from './central';
+import { min, max } from './descriptive';
 import { kahanSum } from './utils';
 
 /**
@@ -18,7 +15,7 @@ export function squareDeviationSum(arr, mu) {
   if (!Array.isArray(arr) || arr.length === 0) return undefined;
   const m = Number.isFinite(mu) ? mu : mean(arr);
   if (m === undefined) return undefined;
-  const sum = kahanSum(arr.map(elt => (elt - m) ** 2));
+  const sum = kahanSum(arr.map((elt) => (elt - m) ** 2));
   return sum;
 }
 
@@ -92,10 +89,24 @@ export function range(arr) {
   return maximum - minimum;
 }
 
+/**
+ * Return the median absolute deviation of a numeric data array.
+ * The media absolute deviation is the median of the absolute deviations from the data median.
+ * @param {Number[]} arr the data array
+ * @returns {Number} the median absolute devuation of the data array
+ */
+export function mad(arr) {
+  const med = median(arr);
+  if (med === undefined) return undefined;
+  const deviations = arr.map((elt) => Math.abs(elt - med));
+  return median(deviations);
+}
+
 export default {
   pVariance,
   pStdev,
   variance,
   stdev,
   range,
+  mad,
 };
