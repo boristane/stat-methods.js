@@ -384,6 +384,7 @@ kurtosis(arr);
 Returns the sample kurtosis of the data array.
 
 The sample kurtosis is a measure of the "tailedness" of a data array.
+
 ```js
 const arr = [0, 3, 4, 1, 2, 3, 0, 2, 1, 3, 2, 0, 2, 2, 3, 2, 5, 2, 3, 999];
 kurtosis(arr).toFixed(2); // -> '15.05';

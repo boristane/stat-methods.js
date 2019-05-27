@@ -1,26 +1,22 @@
 language: node_js
 sudo: false
 node_js:
-  - '10'
-
+- '10'
 cache:
   directories:
-    - '.eslintcache'
-    - 'node_modules'
-
+  - ".eslintcache"
+  - node_modules
 git:
   depth: 10
 branches:
   only:
-    - master
-
+  - master
 install:
-  - npm install -g jest
-  - npm ci
-
+- npm install -g jest
+- npm ci
 script:
-  # Tests
-  - npm run test
-  # Integration
-  - npm run build
-
+- npm run test
+- npm run build
+notifications:
+  slack:
+    secure: hWKdmlDMO5cDAltQxktMzZGAxT5TYnO+jnSyo8u7w/KJAQVffEAxiddxYzXU/FrWwSo7MJrVaC/DyQo55U5yWMDTGeY7HzSEJjefG4cPFV7Dsvydcim88mjt2UHTwigP38SqFC/pNp7hUchKifvkWHcrOzne5b7DSfVdPJtluTn+FJR2bbxpsAcG/VLDr0qA/LJaJ1G4b3YQjqsObjffAWQSMaD/96AhfMQjOHyMfuTEnEgbc5zPXDDEG2qGSQ1gdLrcuIo9Em58V1L2eAqnsYjrxBwX+PcYRAv3MQS5ZnC9kmKm+tAw+WKCLSD4kakuQsxsm0AEfzRAKGq5ECcI1hmF/D2C9J9NMUspUuYzbYFgaxJFD6m8w73rgYYG7R0Vm4Ii4TUaAMjSou+QBg6alfGuZLreVx1I+TVFJtxrOouMk6teQMSkyshNvxgbeS5QcqFvifPptzRZhioV4wjImbV+aoCfhLd4ix4nzECFn4MnImgFJ1STPVL0f3F+JIShy55qKUsdlLsBPsbgzdtVhasggMNLd3azHbnzxWDRp/E3k08d3+wtSvRknkvWadAWTHPJo4U9/sxa1gtzs+2uf9kt4Kx1NsJx26HhXre2qWdXALMZlC7e95ocLDMcc9XA3GAOkyxqgOHN3zBvc6wS34F2gw20Wi3ySq9NoYP5K+o=
