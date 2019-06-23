@@ -1,6 +1,6 @@
 {
   "name": "stat-methods",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "A library which provides functions for calculating mathematical statistics of numeric data",
   "main": "dist/stat-methods.js",
   "scripts": {
